@@ -5,6 +5,6 @@ export const colors={
     white:"#fff"
 } 
 export const spacing={
-    pd: { sm: 8, md: 16, lg: 24, xl: 40 },
-    m: { sm: 8, md: 16, lg: 24, xl: 40 },
+    pd: { sm: 16, md: 24, lg: 32, xl: 40 },
+    m: { sm: 16, md: 24, lg: 32, xl: 40 },
 }
