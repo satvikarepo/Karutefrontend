@@ -1,27 +1,35 @@
 import React from 'react';
 import { TouchableWithoutFeedback, StyleSheet, View, 
     NativeSyntheticEvent, TextInputChangeEventData } from 'react-native';
-import { Layout, Text, Button, Input } from '@ui-kitten/components';
+import { Layout, Text, Button, Input, InputProps } from '@ui-kitten/components';
 import { styles } from '../../theme/styles';
 
-interface IMyInput{
+interface IMyInput extends InputProps{
     placeholder?:string,
     prefix?:React.ReactElement,
     postfix?:React.ReactElement,
-    onChange?:((e: NativeSyntheticEvent<TextInputChangeEventData>) => void)
+    onChange?:((e: NativeSyntheticEvent<TextInputChangeEventData>) => void),
+    ref?: React.LegacyRef<Input>
 }
-export const MyInput = ({ placeholder,prefix,postfix,onChange }:IMyInput) => {
+export const MyInput = (props:IMyInput) => {
     
     return (
         <>
-            <Input size='large' style={{ 
+            <Input size='large' 
+            ref={props.ref}
+            textStyle={{
+                paddingTop:2,
+                paddingBottom:2,
+            }}
+            style={{ 
                 backgroundColor: 'white',
                 borderRadius:10
             }}
-            onChange={onChange}
-            accessoryRight={postfix}
-            accessoryLeft={prefix}
-            placeholder={placeholder} />
+            {...props}
+            onChange={props.onChange}
+            accessoryRight={props.postfix}
+            accessoryLeft={props.prefix}
+            placeholder={props.placeholder} />
         </>
     );
 }
@@ -47,9 +55,12 @@ export const MyPassword = ({ placeholder, prefix,onChange }:IMyPassword) => {
 
     return (
         <>
-            <Input size='large' style={{ 
+            <Input size='large' textStyle={{
+                paddingTop:2,
+                paddingBottom:2,
+            }} style={{ 
                 backgroundColor: 'white',
-                borderRadius:10
+                borderRadius:10,
             }}
             onChange={onChange}
             accessoryRight={renderIcon}

@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet,FlexAlignType } from 'react-native';
+import { View, Text, StyleSheet, FlexAlignType } from 'react-native';
+import { colors } from '../../theme/vars';
 
 interface IMyView {
   mb?: number,
@@ -12,22 +13,22 @@ interface IMyView {
   pr?: number
   fullW?: boolean,
   w?: number | string,
-  alignItems?:'left'|'right'|'center'|'baseLine'|'stretch',
-  direction?:"row" | "column" | "row-reverse" | "column-reverse" | undefined
+  alignItems?: 'left' | 'right' | 'center' | 'baseLine' | 'stretch',
+  direction?: "row" | "column" | "row-reverse" | "column-reverse" | undefined
   children: React.ReactElement,
 
 }
 export const MyView = (props: IMyView) => {
-  
-  const positionMap={
-    left:'flex-start',
-    right:'flex-end',
-    center:'center',
-    baseLine:'baseline',
-    stretch:'stretch'
+
+  const positionMap = {
+    left: 'flex-start',
+    right: 'flex-end',
+    center: 'center',
+    baseLine: 'baseline',
+    stretch: 'stretch'
   }
 
-  const align=(props.alignItems ? positionMap[props.alignItems] : 'flex-start') as FlexAlignType;
+  const align = (props.alignItems ? positionMap[props.alignItems] : 'flex-start') as FlexAlignType;
 
   return (
     <View style={{
@@ -40,14 +41,46 @@ export const MyView = (props: IMyView) => {
       paddingTop: props.pt || 0,
       paddingRight: props.pr || 0,
       paddingLeft: props.pl || 0,
-      alignItems:align,
-      flexDirection:props.direction || 'column-reverse'
+      alignItems: align,
+      flexDirection: props.direction || 'column'
     }}>
       {props.children}
     </View>
   );
 };
 
+
+interface IDividerWithLabel {
+  label: string,
+  color?:string
+}
+
+export const DividerWithLabel = (props: IDividerWithLabel) => {
+  return (
+    <View style={styles.lblContainer}>
+      <View style={[styles.divider,{backgroundColor:props.color || colors.lightGrey}]} />
+      <Text style={[styles.label,{color:props.color || colors.grey}]}>{props.label}</Text>
+      <View style={[styles.divider,{backgroundColor:props.color || colors.lightGrey}]} />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  lblContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 8,
+  },
+  divider: {
+    flex: 1,
+    height: 1.5,
+  },
+  label: {
+    marginHorizontal: 8,
+    fontSize: 16,
+  },
+});
 
 
 

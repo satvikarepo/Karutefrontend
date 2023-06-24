@@ -8,10 +8,9 @@ import { AppStackParamList } from "../../routes";
 import { styles } from '../../theme/styles';
 import { MyInput, MyPassword } from '../../common/components/inputs';
 import { MyButton, MyLinkButton } from '../../common/components/buttons';
-import { MyView } from '../../common/components/layouts';
+import { DividerWithLabel, MyView } from '../../common/components/layouts';
 
 type LoginProp = StackNavigationProp<AppStackParamList, 'Login'>;
-
 
 
 export default function Login({ }) {
@@ -25,8 +24,17 @@ export default function Login({ }) {
         <>
             <Layout style={styles.container}>
                 {/* <Icon name='star' /> */}
+                <MyView fullW mb={8} alignItems='center'>
+                    <>
+                        <Text category="h4">LOGO</Text>
+                    </>
+                </MyView>
+                <MyView fullW mb={48} alignItems='center'>
+                    <Text category="h4">WECARE</Text>
+                </MyView>
                 <View style={[styles.row, { alignItems: 'center' }]}>
-                    <Text category="h1">Login</Text>
+                    <Text category="h1">Welcome back!</Text>
+                    <Text appearance='hint'>Use your credentials to access your account</Text>
                 </View>
                 <View style={styles.row}>
                     <MyInput placeholder='Username' />
@@ -38,13 +46,19 @@ export default function Login({ }) {
                     <MyLinkButton textAlign='right'>Forgot Password?</MyLinkButton>
                 </MyView>
                 <MyButton onPress={goToSignup} size='large'>Log in</MyButton>
-
+                <DividerWithLabel label='Or' />
+                <MyView fullW mb={16} alignItems='right'>
+                    <MyButton onPress={goToSignup} secondary size='large'>Sign in with Google</MyButton>
+                </MyView>
+                <MyView fullW mb={16} alignItems='right'>
+                    <MyButton onPress={goToSignup} secondary size='large'>Sign in with Apple</MyButton>
+                </MyView>
             </Layout>
             <Layout>
-                <MyView fullW alignItems='center' pt={8} pb={8}>
+                <MyView fullW alignItems='center' pt={8} pb={16}>
                     <MyView direction='row'>
                         <>
-                            <Text>Don't have an account?</Text>
+                            <Text category='s1'>Don't have an account?</Text>
                             <MyLinkButton ml={4} textAlign='right'>Sign up</MyLinkButton>
                         </>
                     </MyView>

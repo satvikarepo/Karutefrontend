@@ -1,22 +1,44 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { StyleSheet, View } from 'react-native';
+import { Layout, Card, Text } from '@ui-kitten/components';
+
+import { DividerWithLabel, MyView } from '../../common/components/layouts';
+import OtpInput from '../../common/components/otpInput';
+import { styles } from '../../theme/styles';
+import { MyButton } from '../../common/components/buttons';
 
 export default function OTPVerify() {
   return (
     <>
-      <View style={styles.container}>
-        <Text>This is OTPVerify</Text>
+
+      <Layout style={styles.container}>
         <StatusBar style="auto" />
-      </View>
+        <MyView fullW mb={12} alignItems='center'>
+          <>
+            <Text category="h4">Enter verification code</Text>
+          </>
+        </MyView>
+        <MyView fullW mb={24} alignItems='center'>
+          <>
+            <Text style={{textAlign:'center'}} appearance='hint'>We have sent a verification code to your email.
+             Please check your inbox and enter the code below.</Text>
+          </>
+        </MyView>
+        <MyView fullW mb={24} alignItems='center'>
+          <OtpInput />
+        </MyView>
+        <MyView fullW mb={24} alignItems='center'>
+          <Card>
+            <Text>
+              This is dummy text. The Maldives, officially the Republic of Maldives, is a small country in South Asia,
+              located in the Arabian Sea of the Indian Ocean.
+              It lies southwest of Sri Lanka and India, about 1,000 kilometres (620 mi) from the Asian continent
+              </Text>
+          </Card>
+        </MyView>
+        <MyButton onPress={() => null} size='large'>Continue</MyButton>
+      </Layout>
     </>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

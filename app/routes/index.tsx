@@ -16,7 +16,7 @@ export const Routes = () => {
         <Stack.Navigator initialRouteName='Login' screenOptions={{headerShown:false}}>
             <Stack.Screen name="Login" options={{ title: "Login here" }} component={Login} />
             <Stack.Screen name="Signup" component={Signup} />
-            <Stack.Screen name="OTPVerify" options={{headerShown:true}} component={OTPVerify} />
+            <Stack.Screen name="OTPVerify" options={{ title:"", headerShown:true}} component={OTPVerify} />
         </Stack.Navigator>
     </>
 }
