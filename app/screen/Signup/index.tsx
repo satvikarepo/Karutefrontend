@@ -15,7 +15,7 @@ export default function Signup({}) {
     return (
         <>
             <View style={styles.container}>
-                <Text>This is login</Text>
+                <Text>This is Signup</Text>
                 <StatusBar style="auto" />
                 <Button
                     title="Go to OTPVerify"
