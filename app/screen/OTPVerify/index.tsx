@@ -12,7 +12,7 @@ export default function OTPVerify() {
     <>
 
       <Layout style={styles.container}>
-        <StatusBar style="auto" />
+      <StatusBar style="auto" />
         <MyView fullW mb={12} alignItems='center'>
           <>
             <Text category="h4">Enter verification code</Text>
