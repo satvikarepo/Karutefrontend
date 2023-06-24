@@ -11,7 +11,7 @@ export default function Login({ }) {
     
     const navigation = useNavigation<LoginProp>();
     const goToSignup = () => {
-        navigation.navigate<any>('Signup', { userId: '123' });
+        navigation.navigate<any>('Signup', { data: "" });
     };
     
     return (

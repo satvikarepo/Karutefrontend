@@ -6,7 +6,7 @@ Step 2: Install Expo CLI: Open a terminal or command prompt and run the followin
 
 Step 3: Clone this repo. Make sure you have git installed on your system if not go to https://git-scm.com/downloads and install
 
-Step 4: install "Expo go" app into your phone
+Step 4: install "Expo go" app on your phone
 
 Step 5: Open command promt and navigate to your repo and run the below command
 

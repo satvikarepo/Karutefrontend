@@ -10,7 +10,7 @@ type NavigationProps  = StackNavigationProp<AppStackParamList, 'Login'>;
 export default function Signup({}) {
     const navigation = useNavigation<NavigationProps>();
     const goToOTPVerify = () => {
-        navigation.navigate<any>('OTPVerify', { userId: '123' });
+        navigation.navigate<any>('OTPVerify', { data: '' });
     };
     return (
         <>
