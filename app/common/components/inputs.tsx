@@ -1,7 +1,7 @@
 import React from 'react';
-import { TouchableWithoutFeedback, StyleSheet, View, 
+import { TouchableWithoutFeedback, 
     NativeSyntheticEvent, TextInputChangeEventData } from 'react-native';
-import { Layout, Text, Button, Input, InputProps } from '@ui-kitten/components';
+import {  Text, Input, InputProps } from '@ui-kitten/components';
 import { styles } from '../../theme/styles';
 
 interface IMyInput extends InputProps{
@@ -62,6 +62,7 @@ export const MyPassword = ({ placeholder, prefix,onChange }:IMyPassword) => {
                 backgroundColor: 'white',
                 borderRadius:10,
             }}
+            secureTextEntry={secureTextEntry}
             onChange={onChange}
             accessoryRight={renderIcon}
             accessoryLeft={prefix}
