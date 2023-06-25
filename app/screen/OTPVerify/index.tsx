@@ -1,8 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
 import { Layout, Card, Text } from '@ui-kitten/components';
 
-import { DividerWithLabel, MyView } from '../../common/components/layouts';
+import { MyView } from '../../common/components/layouts';
 import OtpInput from '../../common/components/otpInput';
 import { styles } from '../../theme/styles';
 import { MyButton } from '../../common/components/buttons';

@@ -1,5 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, FlexAlignType } from 'react-native';
+import Svg, { Image } from 'react-native-svg';
+
 import { colors } from '../../theme/vars';
 
 interface IMyView {
@@ -52,15 +54,15 @@ export const MyView = (props: IMyView) => {
 
 interface IDividerWithLabel {
   label: string,
-  color?:string
+  color?: string
 }
 
 export const DividerWithLabel = (props: IDividerWithLabel) => {
   return (
     <View style={styles.lblContainer}>
-      <View style={[styles.divider,{backgroundColor:props.color || colors.lightGrey}]} />
-      <Text style={[styles.label,{color:props.color || colors.grey}]}>{props.label}</Text>
-      <View style={[styles.divider,{backgroundColor:props.color || colors.lightGrey}]} />
+      <View style={[styles.divider, { backgroundColor: props.color || colors.lightGrey }]} />
+      <Text style={[styles.label, { color: props.color || colors.grey }]}>{props.label}</Text>
+      <View style={[styles.divider, { backgroundColor: props.color || colors.lightGrey }]} />
     </View>
   );
 };
@@ -82,6 +84,18 @@ const styles = StyleSheet.create({
   },
 });
 
-
+interface ILogo {
+  w?: number,
+  h?: number
+}
+export const Logo = (props: ILogo) => {
+  return <Svg width={props.w||100} height={props.h||100}>
+  <Image
+    href={require('../../assets/logo.png')}
+    width={props.w||100} 
+    height={props.h||100}
+  />
+</Svg>
+}
 
 

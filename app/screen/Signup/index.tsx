@@ -8,7 +8,7 @@ import { AppStackParamList } from "../../routes";
 import { styles } from '../../theme/styles';
 import { MyInput, MyPassword } from '../../common/components/inputs';
 import { MyButton, MyLinkButton } from '../../common/components/buttons';
-import { DividerWithLabel, MyView } from '../../common/components/layouts';
+import { DividerWithLabel, Logo, MyView } from '../../common/components/layouts';
 
 
 type NavigationProps = StackNavigationProp<AppStackParamList, 'Signup'>;
@@ -25,14 +25,12 @@ export default function Signup({ }) {
 
     return (
         <>
-            <Layout style={styles.container}>
+            <Layout style={[styles.container, {marginTop:32}]}>
                 {/* <Icon name='star' /> */}
                 <MyView fullW alignItems='center'>
-                    <>
-                        <Text category="h4">LOGO</Text>
-                    </>
+                    <Logo />
                 </MyView>
-                <MyView fullW mb={32} mt={24} alignItems='center'>
+                <MyView fullW mb={32} mt={8} alignItems='center'>
                     <Text category="h4">WECARE</Text>
                 </MyView>
                 <View style={[styles.row, { alignItems: 'center' }]}>

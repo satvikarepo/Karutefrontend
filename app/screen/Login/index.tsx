@@ -3,12 +3,13 @@ import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Layout, Text } from '@ui-kitten/components';
+import Svg, { Image } from 'react-native-svg';
 
 import { AppStackParamList } from "../../routes";
 import { styles } from '../../theme/styles';
 import { MyInput, MyPassword } from '../../common/components/inputs';
 import { MyButton, MyLinkButton } from '../../common/components/buttons';
-import { DividerWithLabel, MyView } from '../../common/components/layouts';
+import { DividerWithLabel, Logo, MyView } from '../../common/components/layouts';
 
 type LoginProp = StackNavigationProp<AppStackParamList, 'Login'>;
 
@@ -22,12 +23,10 @@ export default function Login({ }) {
 
     return (
         <>
-            <Layout style={styles.container}>
+            <Layout style={[styles.container, {marginTop:32}]}>
                 {/* <Icon name='star' /> */}
                 <MyView fullW mb={8} alignItems='center'>
-                    <>
-                        <Text category="h4">LOGO</Text>
-                    </>
+                    <Logo/>
                 </MyView>
                 <MyView fullW mb={48} alignItems='center'>
                     <Text category="h4">WECARE</Text>

@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { View, NativeSyntheticEvent, TextInputKeyPressEventData } from 'react-native';
 import { Input } from '@ui-kitten/components';
-import { MyInput } from './inputs';
 
 const OtpInput: React.FC = () => {
     const [otp, setOtp] = useState<string>('');
@@ -31,9 +30,8 @@ const OtpInput: React.FC = () => {
     return (
         <View style={{ flexDirection: 'row' }}>
             {Array.from({ length: 5 }, (_, index) => (
-                <>
                     <Input
-                        key={index}
+                        key={`${index}-otp`}
                         ref={(ref) => (otpInputRefs.current[index] = ref)}
                         value={otp[index]}
                         onChangeText={(value) => handleOtpChange(value, index)}
@@ -52,7 +50,6 @@ const OtpInput: React.FC = () => {
                         keyboardType="numeric"
                         maxLength={1}
                     />
-                </>
             ))}
         </View>
     );
