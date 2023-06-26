@@ -1,5 +1,5 @@
 // import { StatusBar } from 'expo-status-bar';
-import { View, SafeAreaView } from 'react-native';
+import { View, SafeAreaView, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Layout, Text } from '@ui-kitten/components';
@@ -25,40 +25,42 @@ export default function Signup({ }) {
 
     return (
         <>
-            <Layout style={[styles.container, {marginTop:32}]}>
-                {/* <Icon name='star' /> */}
-                <MyView fullW alignItems='center'>
-                    <Logo />
-                </MyView>
-                <MyView fullW mb={32} mt={8} alignItems='center'>
-                    <Text category="h4">WECARE</Text>
-                </MyView>
-                <View style={[styles.row, { alignItems: 'center' }]}>
-                    <Text category="h1">Create your account</Text>
-                    <Text appearance='hint'>Please fill the details to create your account</Text>
-                </View>
-                <MyView fullW mb={16}>
-                    <MyInput placeholder='Name' />
-                </MyView>
-                <MyView fullW mb={16}>
-                    <MyInput placeholder='Email' />
-                </MyView>
-                <MyView fullW mb={16}>
-                    <MyPassword placeholder='Password' />
-                </MyView>
-                <MyView fullW mb={16}>
-                    <MyPassword placeholder='Confirm password' />
-                </MyView>
+            <ScrollView>
+                <Layout style={[styles.container, { marginTop: 32 }]}>
+                    {/* <Icon name='star' /> */}
+                    <MyView fullW alignItems='center'>
+                        <Logo />
+                    </MyView>
+                    <MyView fullW mb={32} mt={8} alignItems='center'>
+                        <Text category="h4">WECARE</Text>
+                    </MyView>
+                    <View style={[styles.row, { alignItems: 'center' }]}>
+                        <Text category="h1">Create your account</Text>
+                        <Text appearance='hint'>Please fill the details to create your account</Text>
+                    </View>
+                    <MyView fullW mb={16}>
+                        <MyInput placeholder='Name' />
+                    </MyView>
+                    <MyView fullW mb={16}>
+                        <MyInput placeholder='Email' />
+                    </MyView>
+                    <MyView fullW mb={16}>
+                        <MyPassword placeholder='Password' />
+                    </MyView>
+                    <MyView fullW mb={16}>
+                        <MyPassword placeholder='Confirm password' />
+                    </MyView>
 
-                <MyButton onPress={goToOTPVerify} size='large'>Sign up</MyButton>
-                <DividerWithLabel label='Or' />
-                <MyView fullW mb={16} alignItems='right'>
-                    <MyButton onPress={goToLogin} secondary size='large'>Sign in with Google</MyButton>
-                </MyView>
-                <MyView fullW mb={16} alignItems='right'>
-                    <MyButton onPress={goToLogin} secondary size='large'>Sign in with Apple</MyButton>
-                </MyView>
-            </Layout>
+                    <MyButton onPress={goToOTPVerify} size='large'>Sign up</MyButton>
+                    <DividerWithLabel label='Or' />
+                    <MyView fullW mb={16} alignItems='right'>
+                        <MyButton onPress={goToLogin} secondary size='large'>Sign in with Google</MyButton>
+                    </MyView>
+                    <MyView fullW mb={16} alignItems='right'>
+                        <MyButton onPress={goToLogin} secondary size='large'>Sign in with Apple</MyButton>
+                    </MyView>
+                </Layout>
+            </ScrollView>
             <Layout>
                 <MyView fullW alignItems='center' pt={8} pb={16}>
                     <MyView direction='row'>

@@ -3,7 +3,8 @@ import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Layout, Text } from '@ui-kitten/components';
-import Svg, { Image } from 'react-native-svg';
+import { SvgXml } from 'react-native-svg';
+import { UserXml } from "../../assets/icons"
 
 import { AppStackParamList } from "../../routes";
 import { styles } from '../../theme/styles';
@@ -11,22 +12,27 @@ import { MyInput, MyPassword } from '../../common/components/inputs';
 import { MyButton, MyLinkButton } from '../../common/components/buttons';
 import { DividerWithLabel, Logo, MyView } from '../../common/components/layouts';
 
-type LoginProp = StackNavigationProp<AppStackParamList, 'Login'>;
 
+type LoginProp = StackNavigationProp<AppStackParamList, 'Login'>;
 
 export default function Login({ }) {
 
     const navigation = useNavigation<LoginProp>();
     const goToSignup = () => {
         navigation.navigate<any>('Signup', { data: "" });
+      // navigation.navigate<any>('Dashboard', { data: "" });
     };
 
     return (
         <>
-            <Layout style={[styles.container, {marginTop:32}]}>
+            <Layout style={[styles.container, { marginTop: 32 }]}>
                 {/* <Icon name='star' /> */}
+                {/* SVG rending */}
+                {/* <SvgXml xml={UserXml({w:100,h:100, color:'green'})} /> */}
                 <MyView fullW mb={8} alignItems='center'>
-                    <Logo/>
+                    <>
+                        <Logo />
+                    </>
                 </MyView>
                 <MyView fullW mb={48} alignItems='center'>
                     <Text category="h4">WECARE</Text>
