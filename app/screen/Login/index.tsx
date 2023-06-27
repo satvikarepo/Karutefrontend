@@ -26,7 +26,7 @@ export default function Login({ }) {
     return (
         <>
             <Layout style={[styles.container, { marginTop: 32 }]}>
-                <IconUser w={60} h={60} color='blue' />
+                {/* <IconUser w={60} h={60} color='blue' /> */}
                 <MyView fullW mb={8} alignItems='center'>
                     <>
                         <Logo />
