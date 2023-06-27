@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Layout, Text } from '@ui-kitten/components';
 import { SvgXml } from 'react-native-svg';
-import { UserXml } from "../../assets/icons"
+import { IconUser } from "../../assets/icons"
 
 import { AppStackParamList } from "../../routes";
 import { styles } from '../../theme/styles';
@@ -26,9 +26,7 @@ export default function Login({ }) {
     return (
         <>
             <Layout style={[styles.container, { marginTop: 32 }]}>
-                {/* <Icon name='star' /> */}
-                {/* SVG rending */}
-                {/* <SvgXml xml={UserXml({w:100,h:100, color:'green'})} /> */}
+                <IconUser w={60} h={60} color='blue' />
                 <MyView fullW mb={8} alignItems='center'>
                     <>
                         <Logo />

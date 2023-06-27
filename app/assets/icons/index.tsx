@@ -1,3 +1,4 @@
+import { SvgXml } from 'react-native-svg';
 
 interface IUserSvg{
  w?:string|number,
@@ -5,8 +6,8 @@ interface IUserSvg{
  color?:string
 }
 
-export const UserXml=(props?:IUserSvg)=>{
-    return `<svg width="${props?.w||40}px" height="${props?.h||40}px" viewBox="-1 0 20 20" version="1.1"
+export const IconUser=(props?:IUserSvg)=>{
+    return <SvgXml xml={`<svg width="${props?.w||40}px" height="${props?.h||40}px" viewBox="-1 0 20 20" version="1.1"
     xmlns="http://www.w3.org/2000/svg">
        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
            <g id="Dribbble-Light-Preview" transform="translate(-381.000000, -8039.000000)" 
@@ -17,6 +18,6 @@ export const UserXml=(props?:IUserSvg)=>{
                </g>
            </g>
        </g>
-    </svg>`
+    </svg>`} />
 }
 
