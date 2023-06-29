@@ -1,3 +1,4 @@
+import React,{useState} from "react";
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet,Text  } from 'react-native';
 import * as eva from '@eva-design/eva';
@@ -7,17 +8,21 @@ import { NavigationContainer } from '@react-navigation/native';
 import { colors } from './app/theme/vars';
 import { Stack, Routes } from './app/routes';
 import { default as theme } from './app/theme/eva-1.json'; 
+import BottomTabBar from './app/screen/Private/BottomTabBar';
 
 export default function App() {
+  const [isLoggedin, setLogin]=useState(false);
 
   return (
     <>
-    {/* <IconRegistry icons={EvaIconsPack} /> */}
       <ApplicationProvider {...eva} theme={{ ...eva.light, ...theme }}>
         <StatusBar style='dark' />
-        <NavigationContainer>
-          <Routes />
-        </NavigationContainer>
+        {isLoggedin ? 
+        <BottomTabBar setLogin={setLogin} />
+        : <NavigationContainer>
+        <Routes setLogin={setLogin} />
+      </NavigationContainer>
+      }
       </ApplicationProvider>
     </>
   );

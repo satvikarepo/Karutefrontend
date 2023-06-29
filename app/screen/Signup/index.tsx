@@ -27,7 +27,6 @@ export default function Signup({ }) {
         <>
             <ScrollView>
                 <Layout style={[styles.container, { marginTop: 32 }]}>
-                    {/* <Icon name='star' /> */}
                     <MyView fullW alignItems='center'>
                         <Logo />
                     </MyView>

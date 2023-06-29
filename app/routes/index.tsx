@@ -2,25 +2,35 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Login from '../../app/screen/Login';
 import Signup from '../../app/screen/Signup';
 import OTPVerify from '../../app/screen/OTPVerify';
-import Dashboard from '../screen/Private/Dashboard';
+import Dashboard from '../screen/Private/Home';
 
 export type AppStackParamList = {
     Login: undefined;
     Signup: undefined;
     OTPVerify: undefined;
-    Dashboard:undefined
+    Dashboard: undefined
 };
 
 export const Stack = createStackNavigator<AppStackParamList>();
 
+interface IRoutes {
+    setLogin: React.Dispatch<React.SetStateAction<boolean>>
+}
+export const Routes = (props: IRoutes) => {
 
-export const Routes = () => {
+    const SignupProps=()=><Signup/>;
+    const LoginProps=()=><Login setLogin={props.setLogin} />
+
     return <>
-        <Stack.Navigator initialRouteName='Login' screenOptions={{headerShown:false}}>
-            <Stack.Screen name="Login" options={{ title: "Login here" }} component={Login} />
-            <Stack.Screen name="Dashboard" options={{ title: "Dashboard" }} component={Dashboard} />
-            <Stack.Screen name="Signup" options={{title:""}} component={Signup} />
-            <Stack.Screen name="OTPVerify" options={{ title:"", headerShown:true}} component={OTPVerify} />
+        <Stack.Navigator
+            initialRouteName='Login'
+            screenOptions={{ headerShown: false }}
+            >
+            <Stack.Screen name="Login"
+            options={{ title: "Login here" }}
+            component={LoginProps} />
+            <Stack.Screen name="Signup" options={{ title: "" }} component={SignupProps} />
+            <Stack.Screen name="OTPVerify" options={{ title: "", headerShown: true }} component={OTPVerify} />
         </Stack.Navigator>
     </>
 }

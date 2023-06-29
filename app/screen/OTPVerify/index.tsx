@@ -1,15 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
 import { Layout, Card, Text } from '@ui-kitten/components';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { useNavigation } from '@react-navigation/native';
 
 import { MyView } from '../../common/components/layouts';
 import OtpInput from '../../common/components/otpInput';
 import { styles } from '../../theme/styles';
 import { MyButton } from '../../common/components/buttons';
+import { AppPublicStackParamList } from '../../common/types';
+
+type OTPVerifyProp = StackNavigationProp<AppPublicStackParamList, 'OTPVerify'>;
 
 export default function OTPVerify() {
+  const navigation = useNavigation<OTPVerifyProp>();
+  const goToLogin = () => {
+   navigation.navigate<any>('Login', { data: "" });
+};
+
   return (
     <>
-
       <Layout style={styles.container}>
       <StatusBar style="auto" />
         <MyView fullW mb={12} alignItems='center'>
@@ -35,7 +44,7 @@ export default function OTPVerify() {
               </Text>
           </Card>
         </MyView>
-        <MyButton onPress={() => null} size='large'>Continue</MyButton>
+        <MyButton onPress={goToLogin} size='large'>Continue</MyButton>
       </Layout>
     </>
   );
