@@ -1,5 +1,8 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import { Layout, Text } from '@ui-kitten/components';
+
+import { useSelector,useDispatch } from "../../../redux/store";
+import { logout } from "../../../redux/actions/global";
 import { styles } from '../../../theme/styles';
 import { AppPublicStackParamList } from '../../../common/types';
 import { MyButton } from '../../../common/components/buttons';
@@ -8,13 +11,18 @@ import { MyButton } from '../../../common/components/buttons';
 export const Stack = createStackNavigator<AppPublicStackParamList>();
 
 interface IProfile{
-    setLogin: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const Profile = (props:IProfile) => {
+
+    const dispatch = useDispatch();
+    const onLogout=()=>{
+        dispatch(logout());
+    }
+
     return <Layout style={styles.container}>
         <Text>Profile</Text>
-        <MyButton onPress={()=>props.setLogin(false)}>Log out</MyButton>
+        <MyButton onPress={onLogout}>Log out</MyButton>
     </Layout>
 }
 

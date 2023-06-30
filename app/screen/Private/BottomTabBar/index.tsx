@@ -14,11 +14,10 @@ import { IconCalendar } from '../../../assets/icons/Calendar';
 const Tab = createBottomTabNavigator<BottomTabParamList>();
 //https://reactnativeforyou.com/how-to-add-bottom-tab-navigator-in-react-native/?expand_article=1
 interface IBottomTabBar{
-    setLogin: React.Dispatch<React.SetStateAction<boolean>>
 }
 function BottomTabBar(props:IBottomTabBar) {
 
-    const ProfileWithProps=()=><Profile setLogin={props.setLogin} />
+    const ProfileWithProps=()=><Profile />
 
     return (
         <NavigationContainer>

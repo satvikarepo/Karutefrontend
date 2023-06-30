@@ -30,7 +30,7 @@ export default function Signup({ }) {
                     <MyView fullW alignItems='center'>
                         <Logo />
                     </MyView>
-                    <MyView fullW mb={32} mt={8} alignItems='center'>
+                    <MyView fullW mb={18} mt={8} alignItems='center'>
                         <Text category="h4">WECARE</Text>
                     </MyView>
                     <View style={[styles.row, { alignItems: 'center' }]}>

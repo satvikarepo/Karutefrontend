@@ -14,12 +14,11 @@ export type AppStackParamList = {
 export const Stack = createStackNavigator<AppStackParamList>();
 
 interface IRoutes {
-    setLogin: React.Dispatch<React.SetStateAction<boolean>>
 }
 export const Routes = (props: IRoutes) => {
 
     const SignupProps=()=><Signup/>;
-    const LoginProps=()=><Login setLogin={props.setLogin} />
+    const LoginProps=()=><Login />
 
     return <>
         <Stack.Navigator
