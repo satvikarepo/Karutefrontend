@@ -20,7 +20,7 @@ const Profile = (props:IProfile) => {
         dispatch(logout());
     }
 
-    return <Layout style={styles.container}>
+    return <Layout style={styles.tabContainer}>
         <Text>Profile</Text>
         <MyButton onPress={onLogout}>Log out</MyButton>
     </Layout>

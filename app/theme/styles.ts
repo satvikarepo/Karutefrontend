@@ -8,6 +8,13 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         padding:spacing.pd.lg
     },
+    tabContainer: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding:spacing.pd.lg,
+        backgroundColor:colors.bg
+    },
     row:{
         width:'100%',
         marginBottom:spacing.m.md

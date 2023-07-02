@@ -8,15 +8,15 @@ import BottomTabBar from './screen/Private/BottomTabBar';
 
 
 export default function MainComponent() {
-  const global=useSelector(state=>state.global);
+  const global = useSelector(state => state.global);
 
   return (
     <>
       <StatusBar style='dark' />
       {(global.loggedIn) ?
-        <BottomTabBar />
+          <BottomTabBar />
         : <NavigationContainer>
-          <Routes/>
+          <Routes />
         </NavigationContainer>
       }
     </>

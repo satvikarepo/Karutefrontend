@@ -7,7 +7,7 @@ import { AppPublicStackParamList } from '../../../common/types';
 export const Stack = createStackNavigator<AppPublicStackParamList>();
 
 const Messages = () => {
-    return <Layout style={styles.container}>
+    return <Layout style={styles.tabContainer}>
         <Text>Messages</Text>
     </Layout>
 }

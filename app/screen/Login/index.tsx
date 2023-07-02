@@ -10,6 +10,7 @@ import { styles } from '../../theme/styles';
 import { MyInput, MyPassword } from '../../common/components/inputs';
 import { MyButton, MyLinkButton } from '../../common/components/buttons';
 import { DividerWithLabel, Logo, MyView } from '../../common/components/layouts';
+import { colors } from '../../theme/vars';
 
 
 
@@ -30,9 +31,8 @@ export default function Login(props: ILogin) {
 
     return (
         <>
-            <ScrollView style={{ width: '100%' }}>
-                <Layout style={[styles.container, { marginTop: 32 }]}>
-
+            <ScrollView style={{ width: '100%', flex:1, backgroundColor:colors.white }}>
+                <Layout style={[styles.container, { marginTop: 32}]}>
                     <MyView fullW mb={8} alignItems='center'>
                         <>
                             <Logo />

@@ -60,9 +60,9 @@ interface IDividerWithLabel {
 export const DividerWithLabel = (props: IDividerWithLabel) => {
   return (
     <View style={styles.lblContainer}>
-      <View style={[styles.divider, { backgroundColor: props.color || colors.lightGrey }]} />
+      <View style={[styles.divider, { backgroundColor: props.color || colors.bg }]} />
       <Text style={[styles.label, { color: props.color || colors.grey }]}>{props.label}</Text>
-      <View style={[styles.divider, { backgroundColor: props.color || colors.lightGrey }]} />
+      <View style={[styles.divider, { backgroundColor: props.color || colors.bg }]} />
     </View>
   );
 };

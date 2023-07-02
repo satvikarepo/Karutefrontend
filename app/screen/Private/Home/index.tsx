@@ -7,8 +7,9 @@ import { AppPublicStackParamList } from '../../../common/types';
 export const Stack = createStackNavigator<AppPublicStackParamList>();
 
 const Home = () => {
-    return <Layout style={styles.container}>
+    return <Layout style={[styles.tabContainer,{}]}>
         <Text>Dashboard</Text>
+
     </Layout>
 }
 
