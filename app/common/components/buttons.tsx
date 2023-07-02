@@ -1,11 +1,11 @@
 import React from 'react';
 import {
-    GestureResponderEvent, TouchableOpacity
+    GestureResponderEvent, TouchableOpacity,StyleSheet,
 } from 'react-native';
 import { Text, Button, ButtonProps } from '@ui-kitten/components';
 
 import { styles } from '../../theme/styles';
-
+import { colors } from '../../theme/vars';
 
 
 interface IMyButton extends ButtonProps {
@@ -16,6 +16,7 @@ export const MyButton = (props: IMyButton) => {
         <>
             <Button appearance={props.secondary ? 'outline' :'filled'}
                 size={props.size || "medium"}
+                {...props}
                 style={[{},{ 
                     paddingTop:16,
                     paddingBottom:16,
@@ -54,3 +55,15 @@ export const MyLinkButton = (props: IMyLinkButton) => {
     );
 };
 
+
+const customStyles = StyleSheet.create({
+    disabledButton: {
+      opacity: 0.5,
+      backgroundColor: colors.primary,
+      borderWidth: 1,
+      // ... other custom styles for the disabled button
+    },
+    text:{
+        color:colors.white
+    }
+  });
