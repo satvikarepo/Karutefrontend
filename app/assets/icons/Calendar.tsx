@@ -1,17 +1,51 @@
 import { SvgXml } from 'react-native-svg';
 
-interface IUserSvg{
- w?:string|number,
- h?:string|number,
- color?:string
+interface IUserSvg {
+    w?: string | number,
+    h?: string | number,
+    color?: string,
+    filled?: boolean
 }
 
-export const IconCalendar=(props?:IUserSvg)=>{
-    return <SvgXml xml={`<svg id="Layer_1" fill="${props?.color||"currentColor"}"
-    width="${props?.w||40}px" height="${props?.h||40}px" 
-    style="enable-background:new 0 0 1024 1024;" version="1.1" 
-    viewBox="0 0 1024 1024" xml:space="preserve" 
-    ><g id="XMLID_36_"><path d="M99,363.3v485.1c0,32.2,26.2,58.4,58.4,58.4h708.7c32.5,0,58.9-26.4,58.9-58.9V363.3H99z M330,779.3h-78   v-40h78V779.3z M330,647.3h-78v-40h78V647.3z M333,514.3h-78v-40h78V514.3z M548,779.3h-77v-40h77V779.3z M548,647.3h-77v-40h77   V647.3z M551,514.3h-77v-40h77V514.3z M767,647.3h-78v-40h78V647.3z M770,514.3h-78v-40h78V514.3z" id="XMLID_414_"/><path d="M925,235.2v88.1H99v-88.6c0-31.9,26-57.9,57.9-57.9H261v-59.5h80v59.5h340v-58.5h80v58.5h105.6   C898.8,176.8,925,203,925,235.2z" id="XMLID_411_"/></g><g id="XMLID_1_"/>
-    <g id="XMLID_2_"/><g id="XMLID_3_"/><g id="XMLID_4_"/><g id="XMLID_5_"/></svg>`}
-     />
+//"#7563F7"
+export const IconCalendar = (props?: IUserSvg) => {
+
+    if (props?.filled) {
+        return <SvgXml xml={`<svg  width="${props?.w || 24}px" height="${props?.h || 24}px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3.09253 9.40421H20.9165" stroke="${props?.color || "currentColor"}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M16.442 13.3097H16.4512" stroke="${props?.color || "currentColor"}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12.0047 13.3097H12.014" stroke="${props?.color || "currentColor"}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M7.55793 13.3097H7.5672" stroke="${props?.color || "currentColor"}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M16.442 17.1962H16.4512" stroke="${props?.color || "currentColor"}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12.0047 17.1962H12.014" stroke="${props?.color || "currentColor"}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M7.55793 17.1962H7.5672" stroke="${props?.color || "currentColor"}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M16.0438 2V5.29078" stroke="${props?.color || "currentColor"}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M7.9654 2V5.29078" stroke="${props?.color || "currentColor"}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M16.2383 3.5791H7.77096C4.83427 3.5791 3 5.21504 
+        3 8.22213V17.2718C3 20.3261 4.83427 21.9999 7.77096 21.9999H16.229C19.175 21.9999 21 20.3545 
+        21 17.3474V8.22213C21.0092 5.21504 19.1842 3.5791 16.2383 3.5791Z" 
+        stroke="${props?.color || "currentColor"}" stroke-width="2" stroke-linecap="round" 
+        stroke-linejoin="round"/>
+        </svg>
+        `}
+        />
+    }
+    return <SvgXml xml={`<svg  width="${props?.w || 24}px" height="${props?.h || 24}px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M3.09253 9.40421H20.9165" stroke="${props?.color || "currentColor"}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M16.442 13.3097H16.4512" stroke="${props?.color || "currentColor"}"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M12.0047 13.3097H12.014" stroke="${props?.color || "currentColor"}"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M7.55793 13.3097H7.5672" stroke="${props?.color || "currentColor"}"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M16.442 17.1962H16.4512" stroke="${props?.color || "currentColor"}"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M12.0047 17.1962H12.014" stroke="${props?.color || "currentColor"}"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M7.55793 17.1962H7.5672" stroke="${props?.color || "currentColor"}"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M16.0438 2V5.29078" stroke="${props?.color || "currentColor"}"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M7.9654 2V5.29078" stroke="${props?.color || "currentColor"}"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.2383 3.5791H7.77096C4.83427 3.5791 3 5.21504 
+    3 8.22213V17.2718C3 20.3261 4.83427 21.9999 7.77096 21.9999H16.229C19.175 21.9999 21 20.3545 
+    21 17.3474V8.22213C21.0092 5.21504 19.1842 3.5791 16.2383 3.5791Z" stroke="${props?.color || "currentColor"}"  
+    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    `}
+    />
 }
+

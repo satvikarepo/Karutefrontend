@@ -47,10 +47,10 @@ const CustomBottomTabBar: React.FC<BottomTabBarProps> = ({
                         underlayColor="transparent"
                     >
                         <View style={isFocused ? {} : {}}>
-                            {route.name === 'Home' && <IconHome w={30} h={30} color={isFocused ? colors.primary : colors.lightGrey} />}
-                            {route.name === 'Messages' && <IconMessage w={30} h={30} color={isFocused ? colors.primary : colors.lightGrey} />}
-                            {route.name === 'Profile' && <IconProfile w={30} h={30} color={isFocused ? colors.primary : colors.lightGrey} />}
-                            {route.name === 'Calendar' && <IconCalendar w={30} h={30} color={isFocused ? colors.primary : colors.lightGrey} />}
+                            {route.name === 'Home' && <IconHome filled={isFocused} color={isFocused ? colors.primary : colors.lightGrey} />}
+                            {route.name === 'Messages' && <IconMessage filled={isFocused} color={isFocused ? colors.primary : colors.lightGrey} />}
+                            {route.name === 'Profile' && <IconProfile color={isFocused ? colors.primary : colors.lightGrey} />}
+                            {route.name === 'Calendar' && <IconCalendar filled={isFocused} color={isFocused ? colors.primary : colors.lightGrey} />}
                         </View>
                     </TouchableHighlight>
                 );

@@ -12,6 +12,11 @@ interface IMyButton extends ButtonProps {
     secondary?:boolean
 }
 export const MyButton = (props: IMyButton) => {
+    const bg={
+        backgroundColor:props.secondary ?"white" :"currentColor",
+        borderColor:props.secondary ? colors.lightGrey : colors.primary
+         
+    }
     return (
         <>
             <Button appearance={props.secondary ? 'outline' :'filled'}
@@ -21,6 +26,7 @@ export const MyButton = (props: IMyButton) => {
                     paddingTop:16,
                     paddingBottom:16,
                     borderRadius: 10, width: '100%',
+                    ...bg
                     }]}
                 onPress={props.onPress}>
                 {props.children}

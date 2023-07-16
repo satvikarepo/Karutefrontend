@@ -1,11 +1,11 @@
 import React from 'react';
 import {
-    TouchableWithoutFeedback,
     NativeSyntheticEvent, TextInputChangeEventData
 } from 'react-native';
 import { Input, InputProps, Button } from '@ui-kitten/components';
 import { IconEyeClosed, IconEyeOpen } from "../../assets/icons/Eye";
 import { colors } from '../../theme/vars';
+import { MyView } from './layouts';
 
 
 interface IMyInput extends InputProps {
@@ -16,7 +16,7 @@ interface IMyInput extends InputProps {
     ref?: React.LegacyRef<Input>
 }
 export const MyInput = (props: IMyInput) => {
-
+    const Prefix= props.prefix ? <MyView pl={6}>{props.prefix}</MyView> : undefined;
     return (
         <>
             <Input size='large'
@@ -32,7 +32,7 @@ export const MyInput = (props: IMyInput) => {
                 {...props}
                 onChange={props.onChange}
                 accessoryRight={props.postfix}
-                accessoryLeft={props.prefix}
+                accessoryLeft={Prefix}
                 placeholder={props.placeholder} />
         </>
     );
@@ -64,7 +64,7 @@ export const MyPassword = ({ placeholder, prefix, onChange }: IMyPassword) => {
                 : <IconEyeOpen w={20} h={20} color={colors.grey} />}
         </Button>
     );
-
+    const Prefix= prefix ? <MyView pl={6}>{prefix}</MyView> : undefined;
     return (
         <>
             <Input size='large' textStyle={{
@@ -77,7 +77,7 @@ export const MyPassword = ({ placeholder, prefix, onChange }: IMyPassword) => {
                 secureTextEntry={secureTextEntry}
                 onChange={onChange}
                 accessoryRight={renderIcon}
-                accessoryLeft={prefix}
+                accessoryLeft={Prefix}
                 placeholder={placeholder} />
         </>
     );

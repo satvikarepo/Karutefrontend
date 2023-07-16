@@ -11,6 +11,10 @@ import { MyInput, MyPassword } from '../../common/components/inputs';
 import { MyButton, MyLinkButton } from '../../common/components/buttons';
 import { DividerWithLabel, Logo, MyView } from '../../common/components/layouts';
 import { colors } from '../../theme/vars';
+import { IconGoogle } from '../../assets/icons/Google';
+import { IconApple } from '../../assets/icons/Apple';
+import { IconLock } from '../../assets/icons/Lock';
+import { IconProfile } from '../../assets/icons/Profile';
 
 
 
@@ -49,10 +53,10 @@ export default function Login(props: ILogin) {
                         <Text appearance='hint'>Use your credentials to access your account</Text>
                     </View>
                     <View style={styles.row}>
-                        <MyInput placeholder='Username' />
+                        <MyInput prefix={<IconProfile color={colors.primary}/>} placeholder='Username' />
                     </View>
                     <MyView fullW mb={8}>
-                        <MyPassword placeholder='Password' />
+                        <MyPassword prefix={<IconLock color={colors.primary} />} placeholder='Password' />
                     </MyView>
                     <MyView fullW mb={16} alignItems='right'>
                         <MyLinkButton textAlign='right'>Forgot Password?</MyLinkButton>
@@ -64,12 +68,16 @@ export default function Login(props: ILogin) {
                         }
                     </MyButton>
                     <DividerWithLabel label='Or' />
+                    
                     <MyView fullW mb={16} alignItems='right'>
                         <MyButton onPress={goToSignup} secondary size='large'
+                        accessoryLeft={<IconGoogle/>}
                         >Sign in with Google</MyButton>
                     </MyView>
                     <MyView fullW mb={16} alignItems='right'>
-                        <MyButton onPress={goToSignup} secondary size='large'>Sign in with Apple</MyButton>
+                        <MyButton onPress={goToSignup} 
+                        accessoryLeft={<IconApple/>}
+                        secondary size='large'>Sign in with Apple</MyButton>
                     </MyView>
                 </Layout>
             </ScrollView>
