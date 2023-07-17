@@ -5,6 +5,11 @@ export type BottomTabParamList = {
     Calendar:undefined;
   };
 
+export type ProfileStackParamList={
+  ProfileHome:undefined,
+  Family:undefined
+}
+
 export type AppPublicStackParamList = {
     Login: undefined;
     Signup: undefined;

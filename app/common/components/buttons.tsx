@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    GestureResponderEvent, TouchableOpacity,StyleSheet,
+    GestureResponderEvent, TouchableOpacity, StyleSheet,
 } from 'react-native';
 import { Text, Button, ButtonProps } from '@ui-kitten/components';
 
@@ -9,28 +9,51 @@ import { colors } from '../../theme/vars';
 
 
 interface IMyButton extends ButtonProps {
-    secondary?:boolean
+    secondary?: boolean
 }
 export const MyButton = (props: IMyButton) => {
-    const bg={
-        backgroundColor:props.secondary ? "white" : colors.primary,
-        borderColor:props.secondary ? colors.lightGrey : colors.primary
-         
+    const bg = {
+        backgroundColor: props.secondary ? "white" : colors.primary,
+        borderColor: props.secondary ? colors.lightGrey : colors.primary
     }
     return (
         <>
-            <Button appearance={props.secondary ? 'outline' :'filled'}
+            <Button appearance={props.secondary ? 'outline' : 'filled'}
                 size={props.size || "medium"}
                 {...props}
                 status={props.status || 'primary'}
-                style={[{},{ 
-                    paddingTop:16,
-                    
-                    paddingBottom:16,
+                style={[{}, {
+                    paddingTop: 16,
+                    paddingBottom: 16,
                     borderRadius: 10, width: '100%',
                     ...bg
-                    }]}
+                }]}
                 onPress={props.onPress}>
+                {props.children}
+            </Button>
+        </>
+    );
+}
+
+
+interface IMyIconButton extends ButtonProps {
+    w?: number,
+    h?: number,
+    showborder?: boolean,
+    bg?: string,
+    borderColor?: string,
+    borderWidth?: number,
+    square?: boolean
+}
+export const MyIconButton = (props: IMyIconButton) => {
+    return (
+        <>
+            <Button {...props} appearance='outline' size='small'
+                style={{
+                    width: props.w, height: props.square ? props.h : props.w,
+                    borderRadius: props.square ? 5 : (props.w || 40) / 2,
+                    borderWidth: props.borderWidth || 0
+                }}>
                 {props.children}
             </Button>
         </>
@@ -66,12 +89,12 @@ export const MyLinkButton = (props: IMyLinkButton) => {
 
 const customStyles = StyleSheet.create({
     disabledButton: {
-      opacity: 0.5,
-      backgroundColor: colors.primary,
-      borderWidth: 1,
-      // ... other custom styles for the disabled button
+        opacity: 0.5,
+        backgroundColor: colors.primary,
+        borderWidth: 1,
+        // ... other custom styles for the disabled button
     },
-    text:{
-        color:colors.white
+    text: {
+        color: colors.white
     }
-  });
+});

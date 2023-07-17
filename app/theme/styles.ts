@@ -10,10 +10,8 @@ export const styles = StyleSheet.create({
     },
     tabContainer: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
         padding:spacing.pd.lg,
-        backgroundColor:colors.bg
+        // backgroundColor:colors.bg
     },
     row:{
         width:'100%',

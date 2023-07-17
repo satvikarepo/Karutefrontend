@@ -1,13 +1,26 @@
 import React from 'react';
-import { TouchableWithoutFeedback } from 'react-native';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import { BottomTabParamList } from '../../../common/types';
+import { BottomTabParamList, ProfileStackParamList } from '../../../common/types';
 import Home from '../Home';
 import Profile from '../Profile';
 import Messages from '../Messages';
+import Family from '../Family';
 import CustomBottomTabBar from './custom';
+
+const ProfileStackList = createStackNavigator<ProfileStackParamList>();
+const ProfileStack = () => {
+    return (
+      <ProfileStackList.Navigator>
+        <ProfileStackList.Screen name="ProfileHome" component={Profile} />
+        <ProfileStackList.Screen name="Family" component={Family} />
+        {/* Add more screens for the Home stack if needed */}
+      </ProfileStackList.Navigator>
+    );
+  };
+
 
 const Tab = createBottomTabNavigator<BottomTabParamList>();
 interface IBottomTabBar {
@@ -52,7 +65,7 @@ function BottomTabBar(props: IBottomTabBar) {
                 <Tab.Screen name="Home" component={Home} />
                 <Tab.Screen name="Messages" options={{}} component={Messages} />
                 <Tab.Screen name="Calendar" component={Messages} />
-                <Tab.Screen name="Profile" component={Profile} />
+                <Tab.Screen name="Profile" options={{headerShown:false}} component={ProfileStack} />
 
             </Tab.Navigator>
         </NavigationContainer>

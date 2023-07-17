@@ -2,7 +2,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Login from '../../app/screen/Login';
 import Signup from '../../app/screen/Signup';
 import OTPVerify from '../../app/screen/OTPVerify';
-import Dashboard from '../screen/Private/Home';
 
 export type AppStackParamList = {
     Login: undefined;

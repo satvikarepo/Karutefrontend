@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlexAlignType } from 'react-native';
+import { View, ViewProps, Text, StyleSheet, FlexAlignType } from 'react-native';
 import Svg, { Image } from 'react-native-svg';
 
 import { colors } from '../../theme/vars';
 
-interface IMyView {
+interface IMyView extends ViewProps {
   mb?: number,
   mt?: number,
   ml?: number,
@@ -12,13 +12,17 @@ interface IMyView {
   pb?: number,
   pt?: number
   pl?: number
-  pr?: number
+  pr?: number,
   fullW?: boolean,
   w?: number | string,
+  h?: number | string,
+  bg?: string,
+  borderColor?: string,
+  borderW?: number,
   alignItems?: 'left' | 'right' | 'center' | 'baseLine' | 'stretch',
   direction?: "row" | "column" | "row-reverse" | "column-reverse" | undefined
   children: React.ReactElement,
-
+  borderRadius?: number,
 }
 export const MyView = (props: IMyView) => {
 
@@ -34,7 +38,9 @@ export const MyView = (props: IMyView) => {
 
   return (
     <View style={{
+      ...{props},
       width: props.fullW ? '100%' : props.w,
+      height: props.h,
       marginBottom: props.mb || 0,
       marginTop: props.mt || 0,
       marginLeft: props.ml || 0,
@@ -44,13 +50,49 @@ export const MyView = (props: IMyView) => {
       paddingRight: props.pr || 0,
       paddingLeft: props.pl || 0,
       alignItems: align,
-      flexDirection: props.direction || 'column'
+      flexDirection: props.direction || 'column',
+      backgroundColor: props.bg,
+      borderRadius: props.borderRadius,
+      borderColor: props.borderColor,
+      borderWidth: props.borderW || 0,
+
     }}>
       {props.children}
     </View>
   );
 };
 
+
+interface IMyCircle extends ViewProps {
+  m?: number,
+  pd?: number,
+  w?: number | string,
+  h?: number | string,
+  bg?: string,
+  borderColor?: string,
+  borderW?: number,
+  children: React.ReactElement,
+}
+
+export const MyCircle = (props: IMyCircle) => {
+  return (
+    <View style={{
+      width: props.w,
+      height: props.h || props.w,
+      margin: props.m || 0,
+      padding: props.pd || 0,
+      alignItems: 'center',
+      justifyContent:'center',
+      flexDirection: 'column',
+      backgroundColor: props.bg,
+      borderRadius: (props.w as number) / 2,
+      borderColor: props.borderColor || colors.lightGrey,
+      borderWidth: props.borderW || 0,
+    }}>
+      {props.children}
+    </View>
+  );
+};
 
 interface IDividerWithLabel {
   label: string,
@@ -89,13 +131,13 @@ interface ILogo {
   h?: number
 }
 export const Logo = (props: ILogo) => {
-  return <Svg width={props.w||100} height={props.h||100}>
-  <Image
-    href={require('../../assets/logo.png')}
-    width={props.w||100} 
-    height={props.h||100}
-  />
-</Svg>
+  return <Svg width={props.w || 100} height={props.h || 100}>
+    <Image
+      href={require('../../assets/logo.png')}
+      width={props.w || 100}
+      height={props.h || 100}
+    />
+  </Svg>
 }
 
 
