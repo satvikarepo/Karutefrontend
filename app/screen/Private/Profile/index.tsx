@@ -1,14 +1,14 @@
 import { createStackNavigator,StackNavigationProp } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
-import { Layout, Text, Avatar, Divider, List, Card, ListItem, Icon } from '@ui-kitten/components';
+import { Layout, Text, Divider } from '@ui-kitten/components';
 import { View } from 'react-native';
 
 import { useSelector, useDispatch } from "../../../redux/store";
 import { logout } from "../../../redux/actions/global";
 import { styles } from '../../../theme/styles';
 import { AppPublicStackParamList, ProfileStackParamList } from '../../../common/types';
-import { MyButton, MyIconButton } from '../../../common/components/buttons';
-import { DividerWithLabel, MyCircle, MyView } from '../../../common/components/layouts';
+import { MyIconButton } from '../../../common/components/buttons';
+import { MyCircle, MyView } from '../../../common/components/layouts';
 import { IconProfile } from '../../../assets/icons/Profile';
 import { colors } from '../../../theme/vars';
 import { IconLogout } from '../../../assets/icons/Logout';

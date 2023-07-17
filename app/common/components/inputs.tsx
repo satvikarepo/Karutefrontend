@@ -30,6 +30,7 @@ export const MyInput = (props: IMyInput) => {
                     borderRadius: 10
                 }}
                 {...props}
+                value={props.value}
                 onChange={props.onChange}
                 accessoryRight={props.postfix}
                 accessoryLeft={Prefix}
