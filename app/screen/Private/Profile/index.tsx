@@ -34,7 +34,7 @@ const Profile = (props: IProfile) => {
     };
     return <Layout style={[styles.tabContainer, { padding: 0 }]}>
         <MyView direction='row' mb={8} alignItems='center'
-            fullW pl={20} pr={20} pt={16} pb={16}>
+            fullW pl={20} pr={20} pt={8} pb={8}>
             <>
                 <MyCircle borderW={1} w={60} bg={colors.primary}>
                     <IconProfile color={colors.white} />
@@ -42,7 +42,7 @@ const Profile = (props: IProfile) => {
                 <MyView ml={16} style={{ flex: 2 }}>
                     <>
                         <Text category="h5">John Doe</Text>
-                        <Text category="s1">Web Developer</Text>
+                        <Text category="s1">JohnDoe@gmail.com</Text>
                     </>
                 </MyView>
             </>
@@ -54,12 +54,12 @@ const Profile = (props: IProfile) => {
         }}>
             <View style={{ flexDirection: 'row' }}>
                 <View style={{ flex: 1, paddingLeft: 16, }}>
-                    <MyIconButton w={80} square onPress={goToFamily}>
+                    <MyIconButton square onPress={goToFamily}>
                         <IconFamily color={colors.primary} />
                     </MyIconButton>
                 </View>
                 <View style={{ flex: 1, paddingRight: 16, alignItems: 'flex-end' }}>
-                    <MyIconButton square onPress={onLogout}>
+                    <MyIconButton onPress={onLogout}>
                         <IconLogout color={colors.primary} />
                     </MyIconButton>
                 </View>

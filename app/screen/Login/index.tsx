@@ -17,8 +17,6 @@ import { IconLock } from '../../assets/icons/Lock';
 import { IconProfile } from '../../assets/icons/Profile';
 
 
-
-
 type LoginProp = StackNavigationProp<AppStackParamList, 'Login'>;
 
 interface ILogin {

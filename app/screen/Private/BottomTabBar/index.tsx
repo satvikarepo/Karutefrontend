@@ -14,7 +14,7 @@ const ProfileStackList = createStackNavigator<ProfileStackParamList>();
 const ProfileStack = () => {
     return (
       <ProfileStackList.Navigator>
-        <ProfileStackList.Screen name="ProfileHome" component={Profile} />
+        <ProfileStackList.Screen name="ProfileHome" options={{title:"Profile", headerShown:true}} component={Profile} />
         <ProfileStackList.Screen name="Family" component={Family} />
         {/* Add more screens for the Home stack if needed */}
       </ProfileStackList.Navigator>

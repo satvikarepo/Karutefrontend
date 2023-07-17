@@ -46,12 +46,14 @@ interface IMyIconButton extends ButtonProps {
     square?: boolean
 }
 export const MyIconButton = (props: IMyIconButton) => {
+    const defaultWidth=40;
     return (
         <>
             <Button {...props} appearance='outline' size='small'
                 style={{
-                    width: props.w, height: props.square ? props.h : props.w,
-                    borderRadius: props.square ? 5 : (props.w || 40) / 2,
+                    width: props.w || defaultWidth, 
+                    height: props.square ? props.h : props.w,
+                    borderRadius: props.square ? 5 : (props.w || defaultWidth) / 2,
                     borderWidth: props.borderWidth || 0
                 }}>
                 {props.children}
