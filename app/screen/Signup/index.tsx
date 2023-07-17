@@ -9,7 +9,12 @@ import { styles } from '../../theme/styles';
 import { MyInput, MyPassword } from '../../common/components/inputs';
 import { MyButton, MyLinkButton } from '../../common/components/buttons';
 import { DividerWithLabel, Logo, MyView } from '../../common/components/layouts';
-
+import { IconGoogle } from '../../assets/icons/Google';
+import { IconApple } from '../../assets/icons/Apple';
+import { IconLock } from '../../assets/icons/Lock';
+import { IconProfile } from '../../assets/icons/Profile';
+import { IconMessage } from '../../assets/icons/Message';
+import { colors } from '../../theme/vars';
 
 type NavigationProps = StackNavigationProp<AppStackParamList, 'Signup'>;
 
@@ -38,25 +43,29 @@ export default function Signup({ }) {
                         <Text appearance='hint'>Please fill the details to create your account</Text>
                     </View>
                     <MyView fullW mb={16}>
-                        <MyInput placeholder='Name' />
+                        <MyInput placeholder='Name' prefix={<IconProfile color={colors.primary}/>} />
                     </MyView>
                     <MyView fullW mb={16}>
-                        <MyInput placeholder='Email' />
+                        <MyInput placeholder='Email' prefix={<IconMessage color={colors.primary}/>} />
                     </MyView>
                     <MyView fullW mb={16}>
-                        <MyPassword placeholder='Password' />
+                        <MyPassword placeholder='Password' prefix={<IconLock color={colors.primary}/>} />
                     </MyView>
                     <MyView fullW mb={16}>
-                        <MyPassword placeholder='Confirm password' />
+                        <MyPassword placeholder='Confirm password' prefix={<IconLock color={colors.primary}/>} />
                     </MyView>
 
                     <MyButton onPress={goToOTPVerify} size='large'>Sign up</MyButton>
                     <DividerWithLabel label='Or' />
                     <MyView fullW mb={16} alignItems='right'>
-                        <MyButton onPress={goToLogin} secondary size='large'>Sign in with Google</MyButton>
+                        <MyButton onPress={goToLogin} secondary 
+                        accessoryLeft={<IconGoogle/>}
+                        size='large'>Sign up with Google</MyButton>
                     </MyView>
                     <MyView fullW mb={16} alignItems='right'>
-                        <MyButton onPress={goToLogin} secondary size='large'>Sign in with Apple</MyButton>
+                        <MyButton onPress={goToLogin} secondary 
+                        accessoryLeft={<IconApple/>}
+                        size='large'>Sign up with Apple</MyButton>
                     </MyView>
                 </Layout>
             </ScrollView>

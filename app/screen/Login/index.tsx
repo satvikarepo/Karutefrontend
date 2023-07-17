@@ -70,12 +70,12 @@ export default function Login(props: ILogin) {
                     <DividerWithLabel label='Or' />
                     
                     <MyView fullW mb={16} alignItems='right'>
-                        <MyButton onPress={goToSignup} secondary size='large'
+                        <MyButton onPress={goToSignup} status='basic' secondary size='large'
                         accessoryLeft={<IconGoogle/>}
                         >Sign in with Google</MyButton>
                     </MyView>
                     <MyView fullW mb={16} alignItems='right'>
-                        <MyButton onPress={goToSignup} 
+                        <MyButton onPress={goToSignup} status='basic'
                         accessoryLeft={<IconApple/>}
                         secondary size='large'>Sign in with Apple</MyButton>
                     </MyView>
