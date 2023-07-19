@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { useSelector } from './redux/store';
 import { Routes } from './routes';
 import BottomTabBar from './screen/Private/BottomTabBar';
+import { colors } from "./theme/vars";
 
 
 export default function MainComponent() {
@@ -12,7 +13,7 @@ export default function MainComponent() {
 
   return (
     <>
-      <StatusBar style='dark' />
+      <StatusBar style='auto' backgroundColor={colors.bg} translucent />
       {(global.loggedIn) ?
           <BottomTabBar />
         : <NavigationContainer>

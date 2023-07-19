@@ -19,16 +19,22 @@ export type ActionType<T>={
     type:string,
     payload:T
 }
+export type ModelType={
+  errors?:string[],
+  modelContent?:React.ReactElement
+}
 export type GlobalStore={
   loading:boolean,
   loggedIn:boolean,
   user?:User,
+  model:ModelType
 }
 
 export type User={
   name:string,
   email:string,
   token:string,
+  refreshToken:string,
 }
 export type LoginRquest={
   userName:string,

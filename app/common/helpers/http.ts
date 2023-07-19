@@ -1,7 +1,8 @@
 import axiosClient, { Method } from "axios";
-//import store from "../Redux/store";
-//import { startLoading, stopLoading } from "../Redux/globalSlice";
+import store,{useDispatch} from "../../redux/store";
+import { startLoading, stopLoading } from "../../redux/actions/commonActions";
 import axios from "axios";
+import { ActionType } from "../types";
 
 const instance = axiosClient.create({
   headers: {
@@ -12,7 +13,7 @@ const instance = axiosClient.create({
 
 instance.interceptors.request.use(req => {
   const token = "";// store.getState().global.user.token;
-//   store.dispatch(startLoading());
+  store.dispatch<ActionType<any>>(startLoading());
   if (token && req.headers) {
     req.headers["token"] = token;
   }
@@ -21,11 +22,11 @@ instance.interceptors.request.use(req => {
 
 instance.interceptors.response.use(
   (res) => {
-   // store.dispatch(stopLoading());
+    store.dispatch<ActionType<any>>(stopLoading());
     return res.data
   },
   (err) => {
-   // store.dispatch(stopLoading());
+    store.dispatch<ActionType<any>>(stopLoading());
     if (err.response) {
       return Promise.reject(err.response);
     }
@@ -36,7 +37,7 @@ instance.interceptors.response.use(
   }
 );
 
-const baseApiUrl='https://localhost:7111/api';
+const baseApiUrl='https://localhost:7163/api';
 const defineMethod = (method: Method) => <T>(url: string, data?: any, headers?:any) => instance.request<any, T>({ method: method, 
   url: url.includes('http') ? url : `${baseApiUrl}/${url}`, data: data, headers: headers});
 const http = {

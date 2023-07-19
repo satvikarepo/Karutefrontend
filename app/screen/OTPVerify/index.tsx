@@ -44,7 +44,7 @@ export default function OTPVerify() {
               </Text>
           </Card>
         </MyView>
-        <MyButton onPress={goToLogin} size='large'>Continue</MyButton>
+        <MyButton fullW onPress={goToLogin} size='large'>Continue</MyButton>
       </Layout>
     </>
   );

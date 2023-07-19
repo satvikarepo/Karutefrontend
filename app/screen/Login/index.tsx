@@ -59,7 +59,7 @@ export default function Login(props: ILogin) {
                     <MyView fullW mb={16} alignItems='right'>
                         <MyLinkButton textAlign='right'>Forgot Password?</MyLinkButton>
                     </MyView>
-                    <MyButton onPress={onLogin} size='large'>
+                    <MyButton onPress={onLogin} fullW size='large'>
                         {global.loading ?
                             <ActivityIndicator size='small' style={{ margin: 0, padding: 0 }} color={colors.lightGrey} />
                             : 'Log in'
@@ -68,12 +68,12 @@ export default function Login(props: ILogin) {
                     <DividerWithLabel label='Or' />
                     
                     <MyView fullW mb={16} alignItems='right'>
-                        <MyButton onPress={goToSignup} status='basic' secondary size='large'
+                        <MyButton fullW onPress={goToSignup} status='basic' secondary size='large'
                         accessoryLeft={<IconGoogle/>}
                         >Sign in with Google</MyButton>
                     </MyView>
                     <MyView fullW mb={16} alignItems='right'>
-                        <MyButton onPress={goToSignup} status='basic'
+                        <MyButton fullW onPress={goToSignup} status='basic'
                         accessoryLeft={<IconApple/>}
                         secondary size='large'>Sign in with Apple</MyButton>
                     </MyView>

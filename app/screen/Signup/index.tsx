@@ -1,4 +1,3 @@
-// import { StatusBar } from 'expo-status-bar';
 import { View, SafeAreaView, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -15,17 +14,25 @@ import { IconLock } from '../../assets/icons/Lock';
 import { IconProfile } from '../../assets/icons/Profile';
 import { IconMessage } from '../../assets/icons/Message';
 import { colors } from '../../theme/vars';
-import { SignUpForm } from './signupUtil';
+import { SignUpForm, registerUser } from './signupUtil';
 import { FormInput, FormInputPassword } from '../../common/components/Forms/FormInput';
+import { regex } from '../../common/constants';
+import { useSelector } from '../../redux/store';
 
 
 type NavigationProps = StackNavigationProp<AppStackParamList, 'Signup'>;
 
 export default function Signup({ }) {
     const navigation = useNavigation<NavigationProps>();
+    const {loading}=useSelector(state=>state.global);
     const form = useForm<SignUpForm>();
     const { control, handleSubmit, formState: { errors } } = form;
-    const onSubmit: SubmitHandler<SignUpForm> = (data) => console.log(data);
+    const onSubmit: SubmitHandler<SignUpForm> = (data) => {
+        if(!loading){
+            registerUser(data);
+            console.log(data);
+        }
+    }
 
     const goToOTPVerify = () => {
         navigation.navigate<any>('OTPVerify', { data: '' });
@@ -57,6 +64,8 @@ export default function Signup({ }) {
                     <MyView fullW mb={16}>
                         <FormInput control={control} rules={{
                             required: 'Name is required.',
+                            maxLength:{value:100, message:"Maximum 100 characters allowed."},
+                            pattern:{value:regex.onlyAlphabets, message:"Invalid input."}
                         }} placeholder="Name" name='name'
                             prefix={<IconProfile color={colors.primary} />}
                             error={errors.name && errors.name.message}
@@ -65,8 +74,9 @@ export default function Signup({ }) {
                     <MyView fullW mb={16}>
                         <FormInput control={control} rules={{
                             required: 'Email is required.',
+                            maxLength:{value:100, message:"Maximum 100 characters allowed."},
                             pattern: {
-                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                value: regex.email,
                                 message: 'Invalid email address.',
                             },
                         }} placeholder="Email" name='email'
@@ -77,6 +87,7 @@ export default function Signup({ }) {
                     <MyView fullW mb={16}>
                         <FormInputPassword control={control} rules={{
                             required: 'Password is required.',
+                            maxLength:{value:100, message:"Maximum 100 characters allowed."}
                         }} placeholder="Password" name='password'
                             prefix={<IconLock color={colors.primary} />}
                             error={errors.password && errors.password.message}
@@ -85,21 +96,22 @@ export default function Signup({ }) {
                     <MyView fullW mb={16}>
                         <FormInputPassword control={control} rules={{
                             required: 'Confirm password is required.',
+                            maxLength:{value:100, message:"Maximum 100 characters allowed."},
                             validate: validatePasswordMatch
                         }} placeholder="Password" name='confirmPassword'
                             prefix={<IconLock color={colors.primary} />}
                             error={errors.confirmPassword && errors.confirmPassword.message}
                         />
                     </MyView>
-                    <MyButton onPress={handleSubmit(onSubmit)} size='large'>Sign up</MyButton>
+                    <MyButton fullW onPress={handleSubmit(onSubmit)} size='large'>Sign up</MyButton>
                     <DividerWithLabel label='Or' />
                     <MyView fullW mb={16} alignItems='right'>
-                        <MyButton onPress={goToLogin} secondary
+                        <MyButton fullW onPress={goToLogin} secondary
                             accessoryLeft={<IconGoogle />}
                             size='large'>Sign up with Google</MyButton>
                     </MyView>
                     <MyView fullW mb={16} alignItems='right'>
-                        <MyButton onPress={goToLogin} secondary
+                        <MyButton fullW onPress={goToLogin} secondary
                             accessoryLeft={<IconApple />}
                             size='large'>Sign up with Apple</MyButton>
                     </MyView>

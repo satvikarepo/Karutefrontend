@@ -9,7 +9,8 @@ import { colors } from '../../theme/vars';
 
 
 interface IMyButton extends ButtonProps {
-    secondary?: boolean
+    secondary?: boolean,
+    fullW?:boolean
 }
 export const MyButton = (props: IMyButton) => {
     const bg = {
@@ -25,8 +26,8 @@ export const MyButton = (props: IMyButton) => {
                 style={[{}, {
                     paddingTop: 16,
                     paddingBottom: 16,
-                    borderRadius: 10, width: '100%',
-                    ...bg
+                    borderRadius: 10, width: props.fullW ? '100%' : undefined,
+                   // ...bg
                 }]}
                 onPress={props.onPress}>
                 {props.children}

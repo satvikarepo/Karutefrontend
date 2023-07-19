@@ -5,13 +5,11 @@ import http from "../../common/helpers/http";
 
 export function SubmitLogin(data:LoginRquest){
     return async (dispatch:Dispatch)=>{
-        dispatch(startLoading());
         //dummy login
         const res = await http.get<any>('https://jsonplaceholder.typicode.com/posts').then(res=>{
-            console.log('apisuccess')
-            dispatch(loginSuccess({name:'pss', email:'pss@g.com',token:'token'}));
+            dispatch(loginSuccess({name:'pss', email:'pss@g.com',token:'token', refreshToken:'refreshToken'}));
         }).catch(err=>{
-            dispatch(stopLoading());
+            console.log(err);
         });
     }
 }
@@ -25,16 +23,4 @@ export const logout=()=>({
     payload:undefined
 });
 
-export const startLoading=()=>({
-    type:GLOBAL_CONSTS.LOADING_START,
-    payload:undefined
-});
-export const stopLoading=()=>({
-    type:GLOBAL_CONSTS.LOADING_STOP,
-    payload:undefined
-});
-export const toggleLoading=()=>({
-    type:GLOBAL_CONSTS.LOADING_TOGGLE,
-    payload:undefined
-});
 
