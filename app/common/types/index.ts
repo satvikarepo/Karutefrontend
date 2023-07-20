@@ -20,7 +20,8 @@ export type ActionType<T>={
     payload:T
 }
 export type ModelType={
-  errors?:string[],
+  type?:'info'|'error'|'warning',
+  messages:string[],
   modelContent?:React.ReactElement
 }
 export type GlobalStore={

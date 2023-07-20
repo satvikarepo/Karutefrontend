@@ -22,12 +22,5 @@ export const styles = StyleSheet.create({
     },
     backdrop: {
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    },
-    closeIcon: {
-        position: 'absolute',
-        top: -20,
-        right: -20,
-        padding: 5,
-        zIndex: 100,
-      },
+    }
 });

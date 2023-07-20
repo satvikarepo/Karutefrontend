@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ViewProps, Text, StyleSheet, FlexAlignType } from 'react-native';
+import { View, ViewProps, StyleProp, ViewStyle, Text, StyleSheet, FlexAlignType } from 'react-native';
 import Svg, { Image } from 'react-native-svg';
 
 import { colors } from '../../theme/vars';
@@ -13,6 +13,7 @@ interface IMyView extends ViewProps {
   pt?: number
   pl?: number
   pr?: number,
+  pd?:number,
   fullW?: boolean,
   w?: number | string,
   h?: number | string,
@@ -35,27 +36,27 @@ export const MyView = (props: IMyView) => {
   }
 
   const align = (props.alignItems ? positionMap[props.alignItems] : 'flex-start') as FlexAlignType;
+  const st=props.style
 
   return (
     <View style={{
-      ...{props},
       width: props.fullW ? '100%' : props.w,
       height: props.h,
-      marginBottom: props.mb || 0,
-      marginTop: props.mt || 0,
-      marginLeft: props.ml || 0,
-      marginRight: props.mr || 0,
-      paddingBottom: props.pb || 0,
-      paddingTop: props.pt || 0,
-      paddingRight: props.pr || 0,
-      paddingLeft: props.pl || 0,
+      marginBottom: props.mb,
+      marginTop: props.mt,
+      marginLeft: props.ml,
+      marginRight: props.mr,
+      paddingBottom: props.pb,
+      paddingTop: props.pt,
+      paddingRight: props.pr,
+      paddingLeft: props.pl,
+      padding:props.pd,
       alignItems: align,
       flexDirection: props.direction || 'column',
       backgroundColor: props.bg,
       borderRadius: props.borderRadius,
       borderColor: props.borderColor,
-      borderWidth: props.borderW || 0,
-
+      borderWidth: props.borderW,
     }}>
       {props.children}
     </View>

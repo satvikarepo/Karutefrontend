@@ -5,7 +5,11 @@ const initState: GlobalStore = {
     loading: false,
     loggedIn: false,
     user: undefined,
-    model: { errors: [], modelContent: undefined }
+    model: {
+        type:undefined,
+        messages: [],
+        modelContent: undefined
+    }
 }
 
 const globalReducer = (state = initState, action: ActionType<User | ModelType>): GlobalStore => {
@@ -20,9 +24,13 @@ const globalReducer = (state = initState, action: ActionType<User | ModelType>):
             return { ...state, loading: false }
         case GLOBAL_CONSTS.LOADING_TOGGLE:
             return { ...state, loading: !state.loading }
-        case GLOBAL_CONSTS.ERROR:
+        case GLOBAL_CONSTS.INFO:
             const objErr = action.payload as ModelType;
-            return { ...state, loading: false, model: { ...state.model, errors: objErr.errors } }
+            return { ...state, loading: false, model: { ...state.model, type:objErr.type,
+                 messages: objErr.messages } }
+        case GLOBAL_CONSTS.CLOSEMODEL:
+            return { ...state, loading: false, model: { ...state.model, type:undefined,
+                  messages: [], modelContent:undefined } }
         case GLOBAL_CONSTS.MODEL:
             const objModel = action.payload as ModelType;
             return { ...state, loading: false, model: { ...state.model, modelContent: objModel.modelContent } }
