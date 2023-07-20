@@ -14,10 +14,11 @@ import { IconLock } from '../../assets/icons/Lock';
 import { IconProfile } from '../../assets/icons/Profile';
 import { IconMessage } from '../../assets/icons/Message';
 import { colors } from '../../theme/vars';
-import { SignUpForm, registerUser } from './signupUtil';
+import { SendOtp } from './signupUtil';
 import { FormInput, FormInputPassword } from '../../common/components/Forms/FormInput';
 import { regex } from '../../common/constants';
 import { useSelector } from '../../redux/store';
+import { SignUpForm } from '../../common/types';
 
 
 type NavigationProps = StackNavigationProp<AppStackParamList, 'Signup'>;
@@ -29,12 +30,12 @@ export default function Signup({ }) {
     const { control, handleSubmit, formState: { errors } } = form;
     const onSubmit: SubmitHandler<SignUpForm> = (data) => {
         if (!loading) {
-            registerUser(data, goToOTPVerify);
+            SendOtp(data, (dataWithOtp:SignUpForm)=>goToOTPVerify(dataWithOtp));
             console.log(data);
         }
     }
 
-    const goToOTPVerify = () => navigation.navigate<any>('OTPVerify', { data: '' });
+    const goToOTPVerify = (dataWithOtp:SignUpForm) => navigation.navigate<any>('OTPVerify', { data: dataWithOtp });
     const goToLogin = () => navigation.navigate<any>('Login', { data: '' });
 
     const validatePasswordMatch = (confirmPassword: string) => {

@@ -13,7 +13,7 @@ export type ProfileStackParamList={
 export type AppPublicStackParamList = {
     Login: undefined;
     Signup: undefined;
-    OTPVerify: undefined
+    OTPVerify: { data: any }
 };
 export type ActionType<T>={
     type:string,
@@ -40,4 +40,12 @@ export type User={
 export type LoginRquest={
   userName:string,
   password:string,
+}
+
+export type SignUpForm = {
+  name: string
+  email: string,
+  emailOtp:string,
+  password: string
+  confirmPassword: string,
 }

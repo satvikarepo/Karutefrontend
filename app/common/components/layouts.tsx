@@ -39,7 +39,7 @@ export const MyView = (props: IMyView) => {
   const st=props.style
 
   return (
-    <View style={{
+    <View {...props} style={{
       width: props.fullW ? '100%' : props.w,
       height: props.h,
       marginBottom: props.mb,

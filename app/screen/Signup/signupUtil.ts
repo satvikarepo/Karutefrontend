@@ -1,17 +1,12 @@
 import {http} from '../../common/helpers/http';
+import { SignUpForm } from '../../common/types';
 
-export type SignUpForm = {
-    name: string
-    email: string,
-    password: string
-    confirmPassword: string,
-}
 
-export const registerUser=(data:SignUpForm, cb:Function)=>{
-
-    http.get('https://jsonplaceholder.typicode.com/posts').then(res=>{
-        console.log('res',res);
-        cb();
+export const SendOtp=(data:SignUpForm, cb:Function)=>{
+    http.get<any>('https://jsonplaceholder.typicode.com/posts').then(res=>{
+       // console.log('res',res);
+        data.emailOtp= ''+12345; // res.data.emailOtp;
+        cb(data);
     }).catch(err=>{
         
     });
