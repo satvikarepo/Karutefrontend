@@ -28,6 +28,10 @@ export default function OTPVerify(props: Props) {
   const matchOtp = () => {
     const data = props.route.params.data as SignUpForm;
     const otpMsg='Invalid OTP. Please re-enter the OTP or change the email.';
+    if(otp===""){
+      setError("Please enter OTP.");
+      return;
+    }
     if (data.emailOtp !== otp) {
       setError(otpMsg);
       return;
@@ -52,7 +56,7 @@ export default function OTPVerify(props: Props) {
           </>
         </MyView>
         <MyView fullW mb={16} alignItems='center'>
-          <OtpInput error={error} onChange={(value) => setOtp(value)} />
+          <OtpInput length={5} error={error} onChange={(value) => setOtp(value)} />
         </MyView>
         <MyView fullW mb={24} alignItems='center'>
           <Card>
@@ -63,7 +67,7 @@ export default function OTPVerify(props: Props) {
             </Text>
           </Card>
         </MyView>
-        <MyButton fullW onPress={matchOtp} size='large'>Continue</MyButton>
+        <MyButton fullW onPress={matchOtp} size='large'>Verify and continue</MyButton>
       </Layout>
     </>
   );
