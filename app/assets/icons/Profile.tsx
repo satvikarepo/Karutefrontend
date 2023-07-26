@@ -34,6 +34,3 @@ export const IconProfile=(props?:IUserSvg)=>{
     stroke="${props?.color || "currentColor"}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>`} />
 }
-
-
-

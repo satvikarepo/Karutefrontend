@@ -72,7 +72,8 @@ interface IMyLinkButton {
     ml?: number,
     mr?: number,
     mt?: number,
-    mb?: number
+    mb?: number,
+    textSize?:number
 }
 export const MyLinkButton = (props: IMyLinkButton) => {
     return (
@@ -85,6 +86,7 @@ export const MyLinkButton = (props: IMyLinkButton) => {
                     marginRight: props.mr || 0,
                     marginTop: props.mt || 0,
                     marginBottom: props.mr || 0,
+                    fontSize:props.textSize 
                 }]}>{props.children}</Text>
             </TouchableOpacity>
         </>

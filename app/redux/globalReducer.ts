@@ -24,7 +24,7 @@ const globalReducer = (state = initState, action: ActionType<User | ModelType>):
             return { ...state, loading: false }
         case GLOBAL_CONSTS.LOADING_TOGGLE:
             return { ...state, loading: !state.loading }
-        case GLOBAL_CONSTS.INFO:
+        case GLOBAL_CONSTS.ALERT:
             const objErr = action.payload as ModelType;
             return { ...state, loading: false, model: { ...state.model, type:objErr.type,
                  messages: objErr.messages } }

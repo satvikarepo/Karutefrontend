@@ -37,7 +37,7 @@ instance.interceptors.response.use(
   }
 );
 
-const baseApiUrl='https://localhost:7163/api';
+const baseApiUrl='http://satvikaitsolutions.com/karute/api';
 const defineMethod = (method: Method) => <T>(url: string, data?: any, headers?:any) => instance.request<any, T>({ method: method, 
   url: url.includes('http') ? url : `${baseApiUrl}/${url}`, data: data, headers: headers});
 const http = {

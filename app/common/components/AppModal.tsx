@@ -1,12 +1,13 @@
 import React, { useRef } from 'react';
-import { Modal, Text } from '@ui-kitten/components';
+import { Animated } from 'react-native';
+import { Text, Modal } from '@ui-kitten/components';
 
 import { styles } from '../../theme/styles';
 import { colors } from '../../theme/vars';
 import { useSelector, useDispatch } from "../../redux/store";
 
 import { MyView } from './layouts';
-import { MyButton } from './buttons';
+import { MyButton, MyLinkButton } from './buttons';
 import { IconErrorWarn } from '../../assets/icons/ErrorWarning';
 import { closeModel } from '../../redux/actions/commonActions';
 
@@ -16,20 +17,16 @@ export const AppModal = () => {
     const dispatch = useDispatch();
     const closeModelPopup = () => dispatch(closeModel());
     const contentPadding = 8;
-  
 
-    if (type && messages.length > 0) {
-        return <AppErrorWarning type={type} data={messages} />
-    }
-
-   
+    const showAlert = (type && messages.length > 0) || false;
 
     return (
         <>
+            <AppErrorWarning visible={showAlert} closeModel={closeModelPopup} type={type} data={messages} />
             <Modal
-                visible={modelContent !== undefined}
+                visible={(!showAlert && modelContent !== undefined)}
                 backdropStyle={styles.backdrop}
-                // onBackdropPress={closeModelPopup}
+                onBackdropPress={closeModelPopup}
                 style={{
                     shadowColor: '#000',
                     shadowOffset: { width: 2, height: 2 },
@@ -51,12 +48,24 @@ export const AppModal = () => {
 
 interface IAppErrorWarning {
     type?: 'error' | 'warning' | 'success' | 'info',
-    data: string[]
+    data: string[],
+    closeModel: () => {},
+    visible: boolean
 }
 
 export const AppErrorWarning = (props: IAppErrorWarning) => {
     const contentPadding = 16;
     const color = colors[props.type || 'error'];
+
+    const opacityValue = useRef(new Animated.Value(0)).current;
+
+    const animateModalExit = () => {
+        Animated.timing(opacityValue, {
+            toValue: 0,
+            duration: 700,
+            useNativeDriver: true,
+        }).start();
+    };
 
     let textbg = colors['color-danger-100'];
     let status = "danger";
@@ -72,35 +81,33 @@ export const AppErrorWarning = (props: IAppErrorWarning) => {
         textbg = colors.white;
         status = 'basic';
     }
+    if (!props.visible) {
+        animateModalExit();
+    }
 
-
-
-
-    return (
+    return <>
         <Modal
-            visible={true}
+            visible={props.visible}
             backdropStyle={styles.backdrop}
-        // onBackdropPress={() => setVisible(false)}
         >
-            <MyView bg={colors.white} borderRadius={20} w={300}
-                pt={contentPadding} pb={contentPadding} pl={contentPadding} pr={contentPadding} >
+            <MyView bg={colors.white} borderRadius={8} w={300}
+                pt={6} pb={contentPadding} pl={contentPadding} pr={contentPadding} >
                 <>
-                    <MyView fullW alignItems='center'>
-                        <IconErrorWarn color={color} w={70} h={70} />
-                    </MyView>
-                    <MyView fullW bg={textbg} borderRadius={10} pd={8} mb={16} >
+                    <MyView fullW alignItems='center' borderRadius={5} pd={16} mb={16} >
                         <>
-                            {props.data.map(text => <Text status={status} key={text}>
+                            <IconErrorWarn color={color} w={30} h={30} />
+                            {props.data.map(text => <Text category='h6' status={'basic'} key={text}>
                                 {text}
                             </Text>)}
                         </>
                     </MyView>
-                    <MyView fullW alignItems='center'>
-                        {/* <MyLinkButton>Ok</MyLinkButton> */}
-                        <MyButton secondary>Ok</MyButton>
+                    <MyView fullW alignItems='center' pb={8}>
+                        {/* <MyButton secondary onPress={props.closeModel}>Dismiss</MyButton> */}
+                        <MyLinkButton textSize={18} onPress={props.closeModel}>Dismiss</MyLinkButton>
                     </MyView>
                 </>
             </MyView>
         </Modal>
-    );
+    </>
+
 }
