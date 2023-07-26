@@ -1,3 +1,4 @@
+import {useEffect} from 'react';
 import { View, ActivityIndicator, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -25,14 +26,19 @@ type NavigationProps = StackNavigationProp<AppStackParamList, 'Signup'>;
 
 export default function Signup({ }) {
     const navigation = useNavigation<NavigationProps>();
-    const { loading } = useSelector(state => state.global);
     const form = useForm<SignUpForm>();
     const { control, handleSubmit, formState: { errors } } = form;
-    const onSubmit: SubmitHandler<SignUpForm> = (data) => {
-        if (!loading) {
-            SendOtp(data, (dataWithOtp:SignUpForm)=>goToOTPVerify(dataWithOtp));
-            console.log(data);
-        }
+
+    const onSubmit: SubmitHandler<SignUpForm> = (data,e) => {
+        e?.preventDefault();
+        SendOtp(data, (dataWithOtp:SignUpForm)=>goToOTPVerify(dataWithOtp));
+        console.log(data);
+        // if (!loading) {
+        //     SendOtp(data, (dataWithOtp:SignUpForm)=>goToOTPVerify(dataWithOtp));
+        //     console.log(data);
+        //     return false;
+        // }
+        return false;
     }
 
     const goToOTPVerify = (dataWithOtp:SignUpForm) => navigation.navigate<any>('OTPVerify', { data: dataWithOtp });
@@ -100,7 +106,8 @@ export default function Signup({ }) {
                         />
                     </MyView>
                     <MyButton fullW onPress={handleSubmit(onSubmit)} size='large'>
-                        {loading ?
+                    {/* <MyButton fullW onPress={onSave} size='large'> */}
+                        {false ?
                             <ActivityIndicator size='small' style={{ margin: 0, padding: 0 }} color={colors.lightGrey} />
                             : 'Sign up'
                         }

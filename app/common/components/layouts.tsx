@@ -16,7 +16,9 @@ interface IMyView extends ViewProps {
   pd?:number,
   fullW?: boolean,
   w?: number | string,
+  minW?:number | string,
   h?: number | string,
+  minH?:number | string,
   bg?: string,
   borderColor?: string,
   borderW?: number,
@@ -41,7 +43,9 @@ export const MyView = (props: IMyView) => {
   return (
     <View {...props} style={{
       width: props.fullW ? '100%' : props.w,
+      minWidth:props.minW,
       height: props.h,
+      minHeight:props.minH,
       marginBottom: props.mb,
       marginTop: props.mt,
       marginLeft: props.ml,

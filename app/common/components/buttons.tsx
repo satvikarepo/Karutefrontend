@@ -10,7 +10,8 @@ import { colors } from '../../theme/vars';
 
 interface IMyButton extends ButtonProps {
     secondary?: boolean,
-    fullW?:boolean
+    fullW?:boolean,
+    ref?: React.MutableRefObject<Button | null>
 }
 export const MyButton = (props: IMyButton) => {
     const bg = {
@@ -20,6 +21,7 @@ export const MyButton = (props: IMyButton) => {
     return (
         <>
             <Button appearance={props.secondary ? 'outline' : 'filled'}
+                ref={props.ref}
                 size={props.size || "medium"}
                 {...props}
                 status={props.status || 'primary'}

@@ -11,7 +11,6 @@ type OtpInputProps = {
 
 const OtpInput: React.FC<OtpInputProps> = ({ error = '',length, onChange = () => { } }) => {
     const [otp, setOtp] = useState<string>('');
-
     const otpInputRefs = useRef<(Input | null)[]>([]);
 
     const handleOtpChange = (value: string, index: number) => {
@@ -60,15 +59,15 @@ const OtpInput: React.FC<OtpInputProps> = ({ error = '',length, onChange = () =>
                             onChangeText={(value) => handleOtpChange(value, index)}
                             onKeyPress={(event) => handleOtpKeyPress(event, index)}
                             textStyle={{
-                                paddingTop: 2,
-                                paddingBottom: 2,
+                                paddingTop: 4,
+                                paddingBottom: 4,
                                 textAlign: 'center' 
                             }}
                             style={{
                                 width: 60,
                                 marginHorizontal: 4,
                                 textAlign: 'center',
-                                backgroundColor: 'white',
+                                //backgroundColor: 'white',
                                 borderRadius: 10,
                             }}
                             keyboardType="numeric"

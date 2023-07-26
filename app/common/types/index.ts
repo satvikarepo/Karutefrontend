@@ -22,7 +22,7 @@ export type ActionType<T>={
 export type ModelType={
   type?:'info'|'error'|'warning',
   messages:string[],
-  modelContent?:React.ReactElement
+  modelContent?:JSX.Element
 }
 export type GlobalStore={
   loading:boolean,
@@ -38,7 +38,7 @@ export type User={
   refreshToken:string,
 }
 export type LoginRquest={
-  userName:string,
+  email:string,
   password:string,
 }
 
@@ -48,4 +48,8 @@ export type SignUpForm = {
   emailOtp:string,
   password: string
   confirmPassword: string,
+}
+export type SignInForm = {
+  email: string,
+  password: string
 }

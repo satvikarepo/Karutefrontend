@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Layout, Card, Text } from '@ui-kitten/components';
+import { Layout, Text, Button } from '@ui-kitten/components';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useNavigation, RouteProp } from '@react-navigation/native';
 
@@ -9,6 +9,11 @@ import OtpInput from '../../common/components/otpInput';
 import { styles } from '../../theme/styles';
 import { MyButton } from '../../common/components/buttons';
 import { AppPublicStackParamList, SignUpForm } from '../../common/types';
+import { Image } from 'react-native';
+import { Img } from '../../assets/Banners';
+import { useDispatch } from '../../redux/store';
+import { closeModel, showModel } from '../../redux/actions/commonActions';
+import OtpSuccess from './OtpSuccess';
 
 type OTPVerifyProp = StackNavigationProp<AppPublicStackParamList, 'OTPVerify'>;
 type OTPVerifyScreenRouteProp = RouteProp<AppPublicStackParamList, 'OTPVerify'>;
@@ -20,15 +25,19 @@ type Props = {
 export default function OTPVerify(props: Props) {
   const [otp, setOtp] = useState('');
   const [error, setError] = useState('');
+  const dispatch=useDispatch();
+
   const navigation = useNavigation<OTPVerifyProp>();
   const goToLogin = () => {
+    dispatch(closeModel());
     navigation.navigate<any>('Login', { data: "" });
   };
 
   const matchOtp = () => {
+    
     const data = props.route.params.data as SignUpForm;
-    const otpMsg='Invalid OTP. Please re-enter the OTP or change the email.';
-    if(otp===""){
+    const otpMsg = 'Invalid OTP. Please re-enter the OTP or change the email.';
+    if (otp === "") {
       setError("Please enter OTP.");
       return;
     }
@@ -37,35 +46,26 @@ export default function OTPVerify(props: Props) {
       return;
     }
     setError('');
-    goToLogin();
+    dispatch(showModel(<OtpSuccess cb={goToLogin} />));
   }
 
   return (
     <>
-      <Layout style={styles.container}>
+      <Layout style={[styles.tabContainer, { alignItems: 'center' }]}>
         <StatusBar style="auto" />
         <MyView fullW mb={12} alignItems='center'>
           <>
             <Text category="h4">Enter verification code</Text>
           </>
         </MyView>
-        <MyView fullW mb={24} alignItems='center'>
-          <>
-            <Text style={{ textAlign: 'center' }} appearance='hint'>We have sent a verification code to your email.
-              Please check your inbox and enter the code below.</Text>
-          </>
+        <MyView w={200} mb={24} alignItems='center'>
+          <Text style={{ textAlign: 'center' }} appearance='hint'>We have sent a verification code to your email.</Text>
         </MyView>
-        <MyView fullW mb={16} alignItems='center'>
+        <MyView fullW mb={24} alignItems='center'>
           <OtpInput length={5} error={error} onChange={(value) => setOtp(value)} />
         </MyView>
-        <MyView fullW mb={24} alignItems='center'>
-          <Card>
-            <Text>
-              This is dummy text. The Maldives, officially the Republic of Maldives, is a small country in South Asia,
-              located in the Arabian Sea of the Indian Ocean.
-              It lies southwest of Sri Lanka and India, about 1,000 kilometres (620 mi) from the Asian continent
-            </Text>
-          </Card>
+        <MyView fullW mb={40} alignItems='center'>
+          <Image style={{ width: 300, height: 300 }} source={Img.OTPBanner()} />
         </MyView>
         <MyButton fullW onPress={matchOtp} size='large'>Verify and continue</MyButton>
       </Layout>

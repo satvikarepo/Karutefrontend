@@ -6,17 +6,19 @@ import { useSelector } from './redux/store';
 import { Routes } from './routes';
 import BottomTabBar from './screen/Private/BottomTabBar';
 import { colors } from "./theme/vars";
-import { AppModel } from "./common/components/AppModel";
+import { AppModal } from "./common/components/AppModal";
+import { GlobalLoader } from "./common/components/GlobalLoader";
 
 
 export default function MainComponent() {
-  const global = useSelector(state => state.global);
+  const loggedIn = useSelector(state => state.global.loggedIn);
 
   return (
     <>
-      <AppModel />
+      <AppModal />
+      <GlobalLoader />
       <StatusBar style='auto' backgroundColor={colors.bg} translucent />
-      {(global.loggedIn) ?
+      {(loggedIn) ?
         <BottomTabBar />
         : <NavigationContainer>
           <Routes />

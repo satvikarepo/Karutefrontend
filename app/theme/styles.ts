@@ -21,6 +21,13 @@ export const styles = StyleSheet.create({
         color: colors.primary
     },
     backdrop: {
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    },
+    loaderBackdrop: {
+        flex: 1, alignItems: 'center',
+        justifyContent: 'center',
+        //backgroundColor: 'rgba(0,0,0,0.5)'
+        backgroundColor:colors.primary
     }
+
 });
