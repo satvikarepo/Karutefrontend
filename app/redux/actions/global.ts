@@ -12,14 +12,12 @@ export function SubmitLogin(data:LoginRquest){
         // }).catch(err=>{
         //     console.log(err);
         // });
-        console.log(data);
         const res = await http.post<any>('Users/Login',data).then(res=>{
             dispatch(loginSuccess(res));
         }).catch(err=>{
-            if(err.status==401){
-               dispatch(showError([err.data]));
+            if(err){
+                dispatch(showError([err]));
             }
-            console.log('login api error',err);
         });
     }
 }

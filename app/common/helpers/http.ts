@@ -1,8 +1,9 @@
-import axiosClient, { Method } from "axios";
+import axiosClient, { AxiosError, Method } from "axios";
 import store,{useDispatch} from "../../redux/store";
-import { startLoading, stopLoading } from "../../redux/actions/commonActions";
+import { startLoading, stopLoading, showError } from "../../redux/actions/commonActions";
 import axios from "axios";
 import { ActionType } from "../types";
+import { commanMessage } from "../constants";
 
 const instance = axiosClient.create({
   headers: {
@@ -25,15 +26,16 @@ instance.interceptors.response.use(
     store.dispatch<ActionType<any>>(stopLoading());
     return res.data
   },
-  (err) => {
+  (err : AxiosError) => {
     store.dispatch<ActionType<any>>(stopLoading());
-    if (err.response) {
-      return Promise.reject(err.response);
+    if (err.response?.data) {
+      return Promise.reject(err.response?.data);
     }
-    if (err.request) {
-      return Promise.reject(err.request);
-    }
-    return Promise.reject(err.message);
+    store.dispatch<ActionType<any>>(showError([commanMessage.GenericErr]));
+    // if (err.request) {
+    //   return Promise.reject(err.request);
+    // }
+    return Promise.reject();
   }
 );
 
@@ -48,7 +50,6 @@ const http = {
   patch: defineMethod('patch'),
   delete: defineMethod('DELETE'),
   url: {
-    // base: "http://localhost:3000",
     base:baseApiUrl,
     build:function(path:string){
       return `${this.base}/${path}`

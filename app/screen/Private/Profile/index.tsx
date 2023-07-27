@@ -23,6 +23,7 @@ interface IProfile {
 }
 
 const Profile = (props: IProfile) => {
+    const user=useSelector(state=>state.global.user);
     const navigation = useNavigation<ProfileProp>();
     const dispatch = useDispatch();
     const onLogout = () => {
@@ -41,8 +42,8 @@ const Profile = (props: IProfile) => {
                 </MyCircle>
                 <MyView ml={16} style={{ flex: 2 }}>
                     <>
-                        <Text category="h5">John Doe</Text>
-                        <Text category="s1">JohnDoe@gmail.com</Text>
+                        <Text category="h5">{user?.name}</Text>
+                        <Text category="s1">{user?.email}</Text>
                     </>
                 </MyView>
             </>

@@ -3,3 +3,7 @@ export const regex={
     onlyAlphabets:/^[a-zA-Z ]*$/i,
     number:/^^[0-9]*$/i,
 }
+
+export const commanMessage={
+    GenericErr: `Oops! It appears our application stumbled upon an unexpected challenge. Our team is on the case. We truly appreciate your understanding!`
+}
