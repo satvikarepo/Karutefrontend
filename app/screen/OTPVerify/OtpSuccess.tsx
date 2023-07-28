@@ -1,8 +1,9 @@
-import { Layout, Text } from '@ui-kitten/components';
+import { Text } from '@ui-kitten/components';
 
 import { MyView } from '../../common/components/layouts';
 import { MyButton } from '../../common/components/buttons';
 import { Image } from 'react-native';
+
 import { Img } from '../../assets/Banners';
 
 interface IOtpSuccess{

@@ -8,6 +8,7 @@ import Home from '../Home';
 import Profile from '../Profile';
 import Messages from '../Messages';
 import Family from '../Family';
+import ChangePassword from '../ChangePassword';
 import CustomBottomTabBar from './custom';
 
 const ProfileStackList = createStackNavigator<ProfileStackParamList>();
@@ -16,6 +17,7 @@ const ProfileStack = () => {
       <ProfileStackList.Navigator>
         <ProfileStackList.Screen name="ProfileHome" options={{title:"Profile", headerShown:true}} component={Profile} />
         <ProfileStackList.Screen name="Family" component={Family} />
+        <ProfileStackList.Screen name="ChangePassword" options={{title:''}} component={ChangePassword} />
         {/* Add more screens for the Home stack if needed */}
       </ProfileStackList.Navigator>
     );

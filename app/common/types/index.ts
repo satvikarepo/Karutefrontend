@@ -7,7 +7,8 @@ export type BottomTabParamList = {
 
 export type ProfileStackParamList={
   ProfileHome:undefined,
-  Family:undefined
+  Family:undefined,
+  ChangePassword:undefined,
 }
 
 export type AppPublicStackParamList = {
@@ -52,4 +53,9 @@ export type SignUpForm = {
 export type SignInForm = {
   email: string,
   password: string
+}
+export type ChangePasswordForm = {
+  oldPassword: string,
+  newPassword: string
+  confirmPassword: string,
 }
