@@ -49,7 +49,7 @@ export default function Login(props: ILogin) {
                 <Layout style={[styles.container, { marginTop: 32 }]}>
                     <MyView fullW mb={8} alignItems='center'>
                         <>
-                            <Logo />
+                            <Logo/>
                         </>
                     </MyView>
                     <MyView fullW mb={48} alignItems='center'>
