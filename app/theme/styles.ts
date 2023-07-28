@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
     },
     row: {
         width: '100%',
-        marginBottom: spacing.m.md
+        marginBottom: spacing.m.sm
     },
     link: {
         color: colors.primary

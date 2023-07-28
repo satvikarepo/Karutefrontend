@@ -14,6 +14,7 @@ import { Img } from '../../assets/Banners';
 import { useDispatch } from '../../redux/store';
 import { closeModel, showModel } from '../../redux/actions/commonActions';
 import OtpSuccess from './OtpSuccess';
+import { SubmitRegistration } from './OtpUtil';
 
 type OTPVerifyProp = StackNavigationProp<AppPublicStackParamList, 'OTPVerify'>;
 type OTPVerifyScreenRouteProp = RouteProp<AppPublicStackParamList, 'OTPVerify'>;
@@ -46,7 +47,9 @@ export default function OTPVerify(props: Props) {
       return;
     }
     setError('');
-    dispatch(showModel(<OtpSuccess cb={goToLogin} />));
+    SubmitRegistration(data,()=>{
+      dispatch(showModel(<OtpSuccess cb={goToLogin} />));
+    });
   }
 
   return (

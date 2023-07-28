@@ -1,5 +1,5 @@
 import { Dispatch } from "redux";
-import { LoginRquest, User } from "../../common/types";
+import { ChangePasswordForm, LoginRquest, User } from "../../common/types";
 import {GLOBAL_CONSTS} from "../constants";
 import http from "../../common/helpers/http";
 import { showError } from "./commonActions";
@@ -12,8 +12,22 @@ export function SubmitLogin(data:LoginRquest){
         // }).catch(err=>{
         //     console.log(err);
         // });
-        const res = await http.post<any>('Users/Login',data).then(res=>{
+        await http.post<any>('Users/Login',data).then(res=>{
             dispatch(loginSuccess(res));
+        }).catch(err=>{
+            if(err){
+                dispatch(showError([err]));
+            }
+        });
+    }
+}
+
+export function SubmitChangePassword(email:string='',data:ChangePasswordForm, cb:()=>void){
+    const _postData={...data, Email:email}
+    console.log('postdata',_postData);
+    return async (dispatch:Dispatch)=>{
+        await http.post<any>('Users/ChangePassword',_postData).then(res=>{
+            cb();
         }).catch(err=>{
             if(err){
                 dispatch(showError([err]));

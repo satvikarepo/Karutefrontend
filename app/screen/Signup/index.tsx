@@ -1,4 +1,3 @@
-import {useEffect} from 'react';
 import { View, ActivityIndicator, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -32,12 +31,6 @@ export default function Signup({ }) {
     const onSubmit: SubmitHandler<SignUpForm> = (data,e) => {
         e?.preventDefault();
         SendOtp(data, (dataWithOtp:SignUpForm)=>goToOTPVerify(dataWithOtp));
-        console.log(data);
-        // if (!loading) {
-        //     SendOtp(data, (dataWithOtp:SignUpForm)=>goToOTPVerify(dataWithOtp));
-        //     console.log(data);
-        //     return false;
-        // }
         return false;
     }
 

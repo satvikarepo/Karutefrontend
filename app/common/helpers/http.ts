@@ -13,10 +13,10 @@ const instance = axiosClient.create({
 });
 
 instance.interceptors.request.use(req => {
-  const token = "";// store.getState().global.user.token;
+  const token = store.getState().global?.user?.token;
   store.dispatch<ActionType<any>>(startLoading());
   if (token && req.headers) {
-    req.headers["token"] = token;
+    req.headers["Authorization"] = `Bearer ${token}`;
   }
   return req;
 })
@@ -31,6 +31,7 @@ instance.interceptors.response.use(
     if (err.response?.data) {
       return Promise.reject(err.response?.data);
     }
+    console.log(err.response);
     store.dispatch<ActionType<any>>(showError([commanMessage.GenericErr]));
     // if (err.request) {
     //   return Promise.reject(err.request);
