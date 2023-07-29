@@ -30,9 +30,10 @@ export default function Login(props: ILogin) {
     const navigation = useNavigation<LoginProp>();
     const form = useForm<SignInForm>();
     const { control, handleSubmit, formState: { errors } } = form;
-    const goToSignup = () => {
-        navigation.navigate<any>('Signup', { data: "" });
-    };
+
+    const goToSignup = () => navigation.navigate<any>('Signup', { data: "" });
+    const goToForgetPassword = () => navigation.navigate<any>('ForgetPassword', { data: "" });
+
 
     const onSubmit: SubmitHandler<SignInForm> = (data,e) => {
         e?.preventDefault();
@@ -45,7 +46,7 @@ export default function Login(props: ILogin) {
 
     return (
         <>
-            <ScrollView style={{ width: '100%', flex: 1, backgroundColor: colors.white }}>
+            <ScrollView style={styles.scrollView}>
                 <Layout style={[styles.container, { marginTop: 32 }]}>
                     <MyView fullW mb={8} alignItems='center'>
                         <>
@@ -82,7 +83,7 @@ export default function Login(props: ILogin) {
                         />
                     </MyView>
                     <MyView fullW mb={16} alignItems='right'>
-                        <MyLinkButton textAlign='right'>Forgot Password?</MyLinkButton>
+                        <MyLinkButton onPress={goToForgetPassword} textAlign='right'>Forgot Password?</MyLinkButton>
                     </MyView>
                     <MyButton onPress={handleSubmit(onSubmit)} fullW size='large'>
                         Log in

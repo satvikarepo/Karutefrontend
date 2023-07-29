@@ -1,5 +1,5 @@
 import axiosClient, { AxiosError, Method } from "axios";
-import store,{useDispatch} from "../../redux/store";
+import store from "../../redux/store";
 import { startLoading, stopLoading, showError } from "../../redux/actions/commonActions";
 import axios from "axios";
 import { ActionType } from "../types";
@@ -13,8 +13,10 @@ const instance = axiosClient.create({
 });
 
 instance.interceptors.request.use(req => {
-  const token = store.getState().global?.user?.token;
+  const global=store.getState().global;
+  const token = global?.user?.token || global?.tempToken;
   store.dispatch<ActionType<any>>(startLoading());
+  console.log('global',token)
   if (token && req.headers) {
     req.headers["Authorization"] = `Bearer ${token}`;
   }
@@ -28,10 +30,14 @@ instance.interceptors.response.use(
   },
   (err : AxiosError) => {
     store.dispatch<ActionType<any>>(stopLoading());
+    console.log(err.response);
     if (err.response?.data) {
+      if(typeof err.response?.data ==='object'){
+        store.dispatch<ActionType<any>>(showError([commanMessage.GenericErr]));
+        return;
+      }
       return Promise.reject(err.response?.data);
     }
-    console.log(err.response);
     store.dispatch<ActionType<any>>(showError([commanMessage.GenericErr]));
     // if (err.request) {
     //   return Promise.reject(err.request);

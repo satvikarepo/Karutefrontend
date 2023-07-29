@@ -7,7 +7,7 @@ import { colors } from '../../theme/vars';
 import { useSelector, useDispatch } from "../../redux/store";
 
 import { MyView } from './layouts';
-import { MyButton, MyLinkButton } from './buttons';
+import { MyLinkButton } from './buttons';
 import { IconErrorWarn } from '../../assets/icons/ErrorWarning';
 import { closeModel } from '../../redux/actions/commonActions';
 
@@ -102,7 +102,6 @@ export const AppErrorWarning = (props: IAppErrorWarning) => {
                         </>
                     </MyView>
                     <MyView fullW alignItems='center' pb={8}>
-                        {/* <MyButton secondary onPress={props.closeModel}>Dismiss</MyButton> */}
                         <MyLinkButton textSize={18} onPress={props.closeModel}>Dismiss</MyLinkButton>
                     </MyView>
                 </>

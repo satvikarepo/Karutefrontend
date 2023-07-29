@@ -6,13 +6,15 @@ export const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        padding: spacing.pd.lg
+        padding: spacing.pd.lg,
+        backgroundColor:colors.white
     },
     tabContainer: {
         flex: 1,
         padding: spacing.pd.lg,
         // backgroundColor:colors.bg
     },
+    scrollView:{ width: '100%', flex: 1, backgroundColor: colors.white },
     row: {
         width: '100%',
         marginBottom: spacing.m.sm

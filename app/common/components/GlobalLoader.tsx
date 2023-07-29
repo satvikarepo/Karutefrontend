@@ -4,19 +4,16 @@ import { Text } from '@ui-kitten/components';
 
 import { styles } from '../../theme/styles';
 import { colors } from '../../theme/vars';
-import { useSelector, useDispatch } from "../../redux/store";
+import { useSelector } from "../../redux/store";
 
 import { MyView } from './layouts';
-import { closeModel } from '../../redux/actions/commonActions';
 
 
 export const GlobalLoader = () => {
     const { loading } = useSelector(state => state.global);
-    const dispatch = useDispatch();
-    const closeModelPopup = () => dispatch(closeModel());
     const contentPadding = 8;
     const opacityValue = useRef(new Animated.Value(0)).current;
-
+    console.log('loading',loading);
     const animateModalExit = () => {
         Animated.timing(opacityValue, {
             toValue: 0,

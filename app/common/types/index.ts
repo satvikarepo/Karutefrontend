@@ -14,7 +14,9 @@ export type ProfileStackParamList={
 export type AppPublicStackParamList = {
     Login: undefined;
     Signup: undefined;
-    OTPVerify: { data: any }
+    OTPVerify: { data: any },
+    ForgetPassword:undefined,
+    ResetPassword:{ data: ChangePasswordForm },
 };
 export type ActionType<T>={
     type:string,
@@ -29,6 +31,7 @@ export type GlobalStore={
   loading:boolean,
   loggedIn:boolean,
   user?:User,
+  tempToken?:string,
   model:ModelType
 }
 
@@ -55,7 +58,9 @@ export type SignInForm = {
   password: string
 }
 export type ChangePasswordForm = {
+  tempPassword?: string,
   oldPassword: string,
   newPassword: string
   confirmPassword: string,
+  email?:string
 }

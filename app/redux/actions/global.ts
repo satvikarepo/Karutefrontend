@@ -24,10 +24,24 @@ export function SubmitLogin(data:LoginRquest){
 
 export function SubmitChangePassword(email:string='',data:ChangePasswordForm, cb:()=>void){
     const _postData={...data, Email:email}
-    console.log('postdata',_postData);
     return async (dispatch:Dispatch)=>{
         await http.post<any>('Users/ChangePassword',_postData).then(res=>{
             cb();
+        }).catch(err=>{
+            if(err){
+                dispatch(showError([err]));
+            }
+        });
+    }
+}
+
+export function SendForgetPasswordOtp(email:string='', cb:(param:string)=>void){
+    return async (dispatch:Dispatch)=>{
+        await http.get<any>(`Users/GenerateTempPassword?email=${email}`).then(res=>{
+            const tempUser:User={email:'',name:'', token:res.tempToken,refreshToken:''}
+            dispatch(tempToken(tempUser));
+            console.log('OTP Log',res);
+            cb(res.emailOtp);
         }).catch(err=>{
             if(err){
                 dispatch(showError([err]));
@@ -44,5 +58,7 @@ export const logout=()=>({
     type:GLOBAL_CONSTS.LOGOUT,
     payload:undefined
 });
-
-
+export const tempToken=(tempUser:User)=>({
+    type:GLOBAL_CONSTS.SET_TEMP_TOKEN,
+    payload:tempUser
+});
