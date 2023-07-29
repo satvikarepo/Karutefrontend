@@ -12,6 +12,7 @@ import { colors } from '../../../theme/vars';
 import { IconLogout } from '../../../assets/icons/Logout';
 import { IconFamily } from '../../../assets/icons/Family';
 import { IconChangePwd } from '../../../assets/icons/ChangePwd';
+import { startLoading } from '../../../redux/actions/commonActions';
 
 
 export const Stack = createStackNavigator<AppPublicStackParamList>();
@@ -39,7 +40,11 @@ const Profile = (props: IProfile) => {
     const navigation = useNavigation<ProfileProp>();
     const dispatch = useDispatch();
     const onLogout = () => {
-        dispatch(logout());
+        dispatch(startLoading())
+        setTimeout(() => {
+            dispatch(logout());
+        }, 500);
+        
     }
 
     const goToFamily = () => {
