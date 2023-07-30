@@ -5,6 +5,7 @@ import Svg, { Image } from 'react-native-svg';
 import { colors } from '../../theme/vars';
 
 interface IMyView extends ViewProps {
+  style?: ViewStyle,
   mb?: number,
   mt?: number,
   ml?: number,
@@ -61,6 +62,9 @@ export const MyView = (props: IMyView) => {
       borderRadius: props.borderRadius,
       borderColor: props.borderColor,
       borderWidth: props.borderW,
+
+
+      ...props.style
     }}>
       {props.children}
     </View>

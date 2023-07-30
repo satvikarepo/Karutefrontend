@@ -10,7 +10,7 @@ import { colors } from '../../theme/vars';
 
 interface IMyButton extends ButtonProps {
     secondary?: boolean,
-    fullW?:boolean,
+    fullW?: boolean,
     ref?: React.MutableRefObject<Button | null>
 }
 export const MyButton = (props: IMyButton) => {
@@ -29,7 +29,7 @@ export const MyButton = (props: IMyButton) => {
                     paddingTop: 16,
                     paddingBottom: 16,
                     borderRadius: 10, width: props.fullW ? '100%' : undefined,
-                   // ...bg
+                    // ...bg
                 }]}
                 onPress={props.onPress}>
                 {props.children}
@@ -49,12 +49,12 @@ interface IMyIconButton extends ButtonProps {
     square?: boolean
 }
 export const MyIconButton = (props: IMyIconButton) => {
-    const defaultWidth=40;
+    const defaultWidth = 40;
     return (
         <>
             <Button {...props} appearance='outline' size='small'
                 style={{
-                    width: props.w || defaultWidth, 
+                    width: props.w || defaultWidth,
                     height: props.square ? props.h : props.w,
                     borderRadius: props.square ? 5 : (props.w || defaultWidth) / 2,
                     borderWidth: props.borderWidth || 0
@@ -73,22 +73,22 @@ interface IMyLinkButton {
     mr?: number,
     mt?: number,
     mb?: number,
-    textSize?:number
+    textSize?: number
 }
 export const MyLinkButton = (props: IMyLinkButton) => {
     return (
         <>
-            <TouchableOpacity onPress={props.onPress}>
-                <Text style={[styles.link,
-                {
-                    textAlign: props.textAlign || 'left',
-                    marginLeft: props.ml || 0,
-                    marginRight: props.mr || 0,
-                    marginTop: props.mt || 0,
-                    marginBottom: props.mr || 0,
-                    fontSize:props.textSize 
-                }]}>{props.children}</Text>
-            </TouchableOpacity>
+                <TouchableOpacity activeOpacity={0.6} onPress={props.onPress}>
+                    <Text style={[styles.link,
+                    {
+                        textAlign: props.textAlign || 'left',
+                        marginLeft: props.ml || 0,
+                        marginRight: props.mr || 0,
+                        marginTop: props.mt || 0,
+                        marginBottom: props.mr || 0,
+                        fontSize: props.textSize
+                    }]}>{props.children}</Text>
+                </TouchableOpacity>
         </>
     );
 };
