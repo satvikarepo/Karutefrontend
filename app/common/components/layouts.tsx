@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ViewProps, StyleProp, ViewStyle, Text, StyleSheet, FlexAlignType } from 'react-native';
+import { View, ViewProps, ViewStyle, Text, StyleSheet, FlexAlignType } from 'react-native';
 import Svg, { Image } from 'react-native-svg';
 
 import { colors } from '../../theme/vars';
@@ -146,3 +146,35 @@ export const Logo = (props: ILogo) => {
 }
 
 
+interface IMyCard {
+  children: React.ReactElement[] | React.ReactElement,
+  style?: ViewStyle,
+  w?:string|number
+}
+
+export const MyCard = (props: IMyCard) => {
+  return <View
+      style={{
+          elevation: 10,
+          shadowColor: colors.grey,
+          backgroundColor: colors.white,
+          borderColor: colors.border, borderWidth: 1,
+          //ios shadow
+          shadowOpacity: 0.5,
+          shadowRadius: 5,
+          shadowOffset: {
+            width: 0,
+            height: 2,
+          },
+
+
+          padding: 16,
+          borderRadius: 20,
+          width: props.w || '100%', 
+          height: 100, 
+          ...props.style
+      }}
+  >
+      {props.children}
+  </View>
+}

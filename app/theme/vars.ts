@@ -11,6 +11,7 @@ export const colors={
     grey:"grey",
     lightGrey:'#d1d1d1',
     bg:'#e4e9f2',
+    border:'#D7DDEA',
     ...theme
 } 
 export const spacing={

@@ -1,3 +1,12 @@
+export type AppStackParamList = {
+  Login: undefined;
+  Signup: undefined;
+  ForgetPassword: undefined;
+  ResetPassword: { data: any };
+  OTPVerify: { data: any };
+  Dashboard: undefined
+};
+
 export type BottomTabParamList = {
     Home: undefined;
     Messages: undefined;

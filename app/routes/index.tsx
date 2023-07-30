@@ -4,15 +4,8 @@ import Signup from '../../app/screen/Signup';
 import OTPVerify from '../../app/screen/OTPVerify';
 import ForgetPassword from '../../app/screen/ForgetPassword';
 import ResetPassword from '../../app/screen/ForgetResetPassword';
+import { AppStackParamList } from '../common/types';
 
-export type AppStackParamList = {
-    Login: undefined;
-    Signup: undefined;
-    ForgetPassword: undefined;
-    ResetPassword: undefined;
-    OTPVerify: undefined;
-    Dashboard: undefined
-};
 
 export const Stack = createStackNavigator<AppStackParamList>();
 

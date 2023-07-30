@@ -7,14 +7,25 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         padding: spacing.pd.lg,
-        backgroundColor:colors.white
+        backgroundColor: colors.white
     },
     tabContainer: {
         flex: 1,
-        padding: spacing.pd.lg,
+        padding: spacing.pd.md,
+        paddingTop:0,
         // backgroundColor:colors.bg
     },
-    scrollView:{ width: '100%', flex: 1, backgroundColor: colors.white },
+    scrollView: { width: '100%', flex: 1, backgroundColor: colors.white },
+    card: {
+        elevation: 10,
+        borderColor: colors.border, // if you need 
+        backgroundColor: 'white',
+        borderWidth: 1,
+        overflow: 'hidden',
+        shadowColor: colors.black,
+        shadowRadius: 10,
+        shadowOpacity: 1,
+    },
     row: {
         width: '100%',
         marginBottom: spacing.m.sm
@@ -29,7 +40,7 @@ export const styles = StyleSheet.create({
         flex: 1, alignItems: 'center',
         justifyContent: 'center',
         //backgroundColor: 'rgba(0,0,0,0.5)'
-        backgroundColor:colors.primary
+        backgroundColor: colors.primary
     }
 
 });

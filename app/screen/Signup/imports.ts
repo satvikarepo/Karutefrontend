@@ -4,7 +4,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { Layout, Text } from '@ui-kitten/components';
 import { useForm, SubmitHandler } from "react-hook-form";
 
-import { AppStackParamList } from "../../routes";
+import { AppStackParamList } from "../../common/types";
 import { styles } from '../../theme/styles';
 import { MyButton, MyLinkButton } from '../../common/components/buttons';
 import { DividerWithLabel, Logo, MyView } from '../../common/components/layouts';

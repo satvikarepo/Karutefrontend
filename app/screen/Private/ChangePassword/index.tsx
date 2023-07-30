@@ -1,13 +1,11 @@
 import { Layout, Text } from '@ui-kitten/components';
 import { Image, View, ScrollView } from 'react-native';
 import { useForm, SubmitHandler } from "react-hook-form";
-import { StackNavigationProp } from '@react-navigation/stack';
-import { useNavigation, RouteProp } from '@react-navigation/native';
 
 import { Img } from '../../../assets/Banners';
 import { styles } from '../../../theme/styles';
 import { MyView } from '../../../common/components/layouts';
-import { AppPublicStackParamList, ChangePasswordForm, ProfileStackParamList } from '../../../common/types';
+import { ChangePasswordForm } from '../../../common/types';
 import { MyButton } from '../../../common/components/buttons';
 import { FormInputPassword } from '../../../common/components/Forms/FormInput';
 import { IconLock } from '../../../assets/icons/Lock';
@@ -40,9 +38,7 @@ const ChangePassword = () => {
         return confirmPassword === password || 'New passwords do not match.';
     };
 
-   
-
-    return <ScrollView>
+    return <ScrollView style={styles.scrollView}>
         <Layout style={[styles.tabContainer, {}]}>
             <MyView fullW alignItems='center' mt={12} mb={8}>
                 <Text category='h4'>Change your password</Text>
