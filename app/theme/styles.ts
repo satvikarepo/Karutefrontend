@@ -13,9 +13,9 @@ export const styles = StyleSheet.create({
         flex: 1,
         padding: spacing.pd.md,
         paddingTop:0,
-        // backgroundColor:colors.bg
+        marginBottom:spacing.bottomTab.h
     },
-    scrollView: { width: '100%', flex: 1, backgroundColor: colors.white },
+    scrollView: { width: '100%', flex: 1, overflow:'scroll', backgroundColor: colors.white },
     card: {
         elevation: 10,
         borderColor: colors.border, // if you need 
@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
     },
     row: {
         width: '100%',
-        marginBottom: spacing.m.sm
+        marginBottom: spacing.m.xm
     },
     link: {
         color: colors.primary
@@ -39,7 +39,6 @@ export const styles = StyleSheet.create({
     loaderBackdrop: {
         flex: 1, alignItems: 'center',
         justifyContent: 'center',
-        //backgroundColor: 'rgba(0,0,0,0.5)'
         backgroundColor: colors.primary
     }
 

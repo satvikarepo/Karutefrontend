@@ -6,7 +6,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 
 import { useSelector, useDispatch } from "../../redux/store";
 import { SubmitLogin } from "../../redux/actions/global";
-import { AppStackParamList } from "../../routes";
+import { AppStackParamList } from "../../common/types";
 import { styles } from '../../theme/styles';
 import { FormInput, FormInputPassword } from '../../common/components/Forms/FormInput';
 import { MyButton, MyLinkButton } from '../../common/components/buttons';

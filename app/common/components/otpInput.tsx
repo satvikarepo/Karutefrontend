@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { View, NativeSyntheticEvent, TextInputKeyPressEventData } from 'react-native';
 import { Input, Text } from '@ui-kitten/components';
 import { MyView } from './layouts';
+import { spacing } from '../../theme/vars';
 
 type OtpInputProps = {
     error?: string,
@@ -68,7 +69,7 @@ const OtpInput: React.FC<OtpInputProps> = ({ error = '',length, onChange = () =>
                                 marginHorizontal: 4,
                                 textAlign: 'center',
                                 //backgroundColor: 'white',
-                                borderRadius: 10,
+                                borderRadius: spacing.radious.inputs,
                             }}
                             keyboardType="numeric"
                             maxLength={1}

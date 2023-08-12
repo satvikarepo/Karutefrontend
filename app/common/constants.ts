@@ -1,3 +1,5 @@
+import { Option } from "./types"
+
 export const regex={
     email: /^\s*[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\s*$/i,  ///^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
     onlyAlphabets:/^[a-zA-Z ]*$/i,
@@ -12,3 +14,13 @@ export const commanMessage={
     Len_100:`Maximum 100 characters allowed.`,
     EnterOTP:`Please enter OTP.`,
 }
+
+export const relations:Option[]=[
+    { id: 'Self', name: 'Self' },
+    { id: 'Spouse', name: 'Spouse' },
+    { id: 'Children', name: 'Children' }
+]
+export const genders:Option[]=[
+    { id: 'Male', name: 'Male' },
+    { id: 'Female', name: 'Female' }
+]

@@ -73,3 +73,16 @@ export type ChangePasswordForm = {
   confirmPassword: string,
   email?:string
 }
+
+export type FamilyMember={
+  name:string,
+  relation:string | number,
+  email:string,
+  dob:Date,
+  gender:'Male'|'Female'
+}
+export interface Option {
+  id: string | number; // The unique value to identify the option (mandatory)
+  name: string; // The label to display in the dropdown (mandatory)
+  [key: string]: any; // Index signature to allow any additional properties
+}

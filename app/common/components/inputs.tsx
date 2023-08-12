@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 import { Input, InputProps, Button } from '@ui-kitten/components';
 import { IconEyeClosed, IconEyeOpen } from "../../assets/icons/Eye";
-import { colors } from '../../theme/vars';
+import { colors,spacing } from '../../theme/vars';
 import { MyView } from './layouts';
 
 
@@ -27,7 +27,7 @@ export const MyInput = (props: IMyInput) => {
                 }}
                 style={{
                     backgroundColor: 'white',
-                    borderRadius: 10
+                    borderRadius: spacing.radious.inputs
                 }}
                 {...props}
                 value={props.value}
@@ -73,7 +73,7 @@ export const MyPassword = ({ placeholder, prefix, onChange }: IMyPassword) => {
                 paddingBottom: 2,
             }} style={{
                 backgroundColor: 'white',
-                borderRadius: 10,
+                borderRadius: spacing.radious.inputs,
             }}
                 secureTextEntry={secureTextEntry}
                 onChange={onChange}

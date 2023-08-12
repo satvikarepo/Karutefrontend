@@ -5,7 +5,7 @@ import {
 import { Text, Button, ButtonProps } from '@ui-kitten/components';
 
 import { styles } from '../../theme/styles';
-import { colors } from '../../theme/vars';
+import { colors, spacing } from '../../theme/vars';
 
 
 interface IMyButton extends ButtonProps {
@@ -28,7 +28,7 @@ export const MyButton = (props: IMyButton) => {
                 style={[{}, {
                     paddingTop: 16,
                     paddingBottom: 16,
-                    borderRadius: 10, width: props.fullW ? '100%' : undefined,
+                    borderRadius: spacing.radious.inputs, width: props.fullW ? '100%' : undefined,
                     // ...bg
                 }]}
                 onPress={props.onPress}>

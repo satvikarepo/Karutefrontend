@@ -76,7 +76,7 @@ const Profile = (props: IProfile) => {
             title={`${item.title}`}
             onPress={() => onListPress(item, index)}
             accessoryLeft={item.icon}
-            style={{ paddingLeft: 24, paddingRight: 16 }}
+            style={{ paddingLeft: 24, paddingRight: 16}}
         />
     );
 
