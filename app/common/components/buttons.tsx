@@ -14,10 +14,7 @@ interface IMyButton extends ButtonProps {
     ref?: React.MutableRefObject<Button | null>
 }
 export const MyButton = (props: IMyButton) => {
-    const bg = {
-        backgroundColor: props.secondary ? "white" : colors.primary,
-        borderColor: props.secondary ? colors.lightGrey : colors.primary
-    }
+   
     return (
         <>
             <Button appearance={props.secondary ? 'outline' : 'filled'}
@@ -29,7 +26,6 @@ export const MyButton = (props: IMyButton) => {
                     paddingTop: 16,
                     paddingBottom: 16,
                     borderRadius: spacing.radious.inputs, width: props.fullW ? '100%' : undefined,
-                    // ...bg
                 }]}
                 onPress={props.onPress}>
                 {props.children}
