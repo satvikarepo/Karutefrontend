@@ -16,7 +16,7 @@ const ProfileStack = () => {
     return (
       <ProfileStackList.Navigator>
         <ProfileStackList.Screen name="ProfileHome" options={{title:"Profile", headerShown:true}} component={Profile} />
-        <ProfileStackList.Screen name="Family" component={Family} />
+        <ProfileStackList.Screen name="Family" options={{title:'Add Family'}} component={Family} />
         <ProfileStackList.Screen name="ChangePassword" options={{title:''}} component={ChangePassword} />
         {/* Add more screens for the Home stack if needed */}
       </ProfileStackList.Navigator>
@@ -64,7 +64,7 @@ function BottomTabBar(props: IBottomTabBar) {
                 })}
             >
 
-                <Tab.Screen name="Home" component={Home} />
+                <Tab.Screen name="Home" options={{title:'', headerShown:false}} component={Home} />
                 <Tab.Screen name="Messages" options={{}} component={Messages} />
                 <Tab.Screen name="Calendar" component={Messages} />
                 <Tab.Screen name="Profile" options={{headerShown:false}} component={ProfileStack} />

@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Animated } from 'react-native';
+import { Animated, Dimensions, ScrollView } from 'react-native';
 import { Text, Modal } from '@ui-kitten/components';
 
 import { styles } from '../../theme/styles';
@@ -12,12 +12,13 @@ import { IconErrorWarn } from '../../assets/icons/ErrorWarning';
 import { closeModel } from '../../redux/actions/commonActions';
 
 
+
 export const AppModal = () => {
     const { modelContent, messages, type } = useSelector(state => state.global.model);
     const dispatch = useDispatch();
     const closeModelPopup = () => dispatch(closeModel());
     const contentPadding = 8;
-
+    const windowHeight = Dimensions.get('window').height;
     const showAlert = (type && messages.length > 0) || false;
 
     return (
@@ -35,7 +36,7 @@ export const AppModal = () => {
                     elevation: 4,
                 }}
             >
-                <MyView bg={colors.white} borderRadius={20}
+                <MyView bg={colors.white} borderRadius={20} maxH={windowHeight}
                     pt={contentPadding} pb={contentPadding} pl={contentPadding} pr={contentPadding} >
                     <>
                         {modelContent}
@@ -56,6 +57,7 @@ interface IAppErrorWarning {
 export const AppErrorWarning = (props: IAppErrorWarning) => {
     const contentPadding = 16;
     const color = colors[props.type || 'error'];
+    const windowHeight = Dimensions.get('window').height - 200;
 
     const opacityValue = useRef(new Animated.Value(0)).current;
 
@@ -91,15 +93,18 @@ export const AppErrorWarning = (props: IAppErrorWarning) => {
             backdropStyle={styles.backdrop}
         >
             <MyView bg={colors.white} borderRadius={8} w={300}
-                pt={6} pb={contentPadding} pl={contentPadding} pr={contentPadding} >
+                pt={6} pb={contentPadding} pl={contentPadding} pr={contentPadding}>
                 <>
-                    <MyView fullW alignItems='center' borderRadius={5} pd={16} mb={16} >
-                        <>
-                            <IconErrorWarn color={color} w={30} h={30} />
+                    <MyView fullW alignItems='center'>
+                        <IconErrorWarn color={color} w={30} h={30} />
+                    </MyView>
+                    <MyView fullW alignItems='center' borderRadius={5} pd={16} mb={16} maxH={windowHeight} >
+                        <ScrollView>
+
                             {props.data.map(text => <Text category='h6' status={'basic'} key={text}>
                                 {text}
                             </Text>)}
-                        </>
+                        </ScrollView>
                     </MyView>
                     <MyView fullW alignItems='center' pb={8}>
                         <MyLinkButton textSize={18} onPress={props.closeModel}>Dismiss</MyLinkButton>

@@ -7,8 +7,18 @@ export const colors={
     info:theme['color-info-500'],
     secondary:"grey",
     black:"#000",
+    //red
     red:"#E50E63",
     redBg:"#F5E1E9",
+    redBorder:"rgba(247, 56, 89, 0.15)",
+    //blue
+    blue:"#1C6BA4",
+    blueBg:"#DCEDF9",
+    blueBorder:"rgba(28, 107, 164, 0.15)",
+    //yellow
+    yellow:"#E09F1F",
+    yellowBg:"#FAF0DB",
+    yellowBorder:"rgba(224, 159, 31, 0.15)",
     white:"#fff",
     grey:"grey",
     lightGrey:'#d1d1d1',

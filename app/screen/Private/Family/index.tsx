@@ -1,3 +1,4 @@
+import {useEffect} from "react";
 import { Layout, Text } from '@ui-kitten/components';
 import { ScrollView } from 'react-native';
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -14,17 +15,37 @@ import { MyButton, regex } from '../../Signup/imports';
 import { FormDate } from '../../../common/components/Forms/FormDate';
 import { FormRadio } from '../../../common/components/Forms/FormRadio';
 import { genders, relations } from '../../../common/constants';
-
+import FamilyCard from './FamilyCard';
+import { useDispatch, useSelector } from '../../../redux/store';
+import { SaveFamilyMember, GetMembers, DeleteMember } from '../../../redux/actions/family';
+import { IconEmpty } from '../../../assets/icons/Empty';
 
 
 const Family = () => {
     const form = useForm<FamilyMember>();
-    const { control, handleSubmit, getValues, setValue, formState: { errors } } = form;
+    const dispatch = useDispatch();
+    const memberList = useSelector(state => state.family.members);
+    const { control, handleSubmit, reset, setValue, formState: { errors } } = form;
+
+    useEffect(()=>{
+        if(memberList.length==0){
+            dispatch(GetMembers());
+        }
+    },[])
+
     const onSubmit: SubmitHandler<FamilyMember> = (data, e) => {
         e?.preventDefault();
         console.log(data);
+        dispatch(SaveFamilyMember(data,()=>{
+            reset();
+        }));
         return false;
     }
+
+    const onDelete=(id:number)=>{
+        dispatch(DeleteMember(id));
+    }
+
     return <ScrollView style={styles.scrollView}>
         <Layout style={[styles.tabContainer, {}]}>
             <MyCard>
@@ -36,8 +57,8 @@ const Family = () => {
                         }}
                         postfix={<IconProfile color={colors.border} />}
                         label={<Text>Full Name</Text>}
-                        error={errors.name && errors.name?.message}
-                        placeholder='Full name' name='name' />
+                        error={errors.fullName && errors.fullName?.message}
+                        placeholder='Full name' name='fullName' />
                 </MyView>
                 <MyView style={styles.row}>
                     <FormSelect size='medium' control={control}
@@ -68,18 +89,37 @@ const Family = () => {
                         rules={{
                             required: "DOB is required.",
                         }}
+                        max={new Date()}
                         error={errors.dob && errors.dob?.message}
                         setValue={setValue} label={<Text>DOB</Text>} />
                 </MyView>
                 <MyView mb={16}>
-                    <FormRadio data={genders} 
-                    defaultVal='Male'
-                    setValue={setValue} control={control} name='gender' />
+                    <FormRadio data={genders}
+                        defaultVal='Male'
+                        setValue={setValue} control={control} name='gender' />
                 </MyView>
                 <MyButton onPress={handleSubmit(onSubmit)}>Add Member</MyButton>
             </MyCard>
             <MyView mt={16} mb={16}>
-                <Text category='s1' style={{fontWeight:'bold'}}>Family Member List</Text>
+                <>
+                    {memberList.length == 0 && <MyView fullW alignItems='center' pd={24} borderRadius={20}>
+                        <IconEmpty color={colors.border} />
+                        <Text appearance='hint' category='s1' >No family members added</Text>
+                    </MyView>}
+                </>
+                <>
+                    {memberList.length > 0 && <>
+                        <MyView mb={16}>
+                            <Text category='s1' style={{ fontWeight: 'bold' }}>Family Member List</Text>
+                        </MyView>
+                        <>
+                            {memberList && memberList.map(item => <FamilyCard key={item.id} 
+                            onDelete={onDelete}
+                            mb={16} data={item} />)}
+                        </>
+                    </>}
+                </>
+
             </MyView>
         </Layout>
     </ScrollView>

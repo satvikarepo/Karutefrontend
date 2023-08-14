@@ -17,8 +17,8 @@ const globalReducer = (state = initState, action: ActionType<User | ModelType>):
     switch (action.type) {
         case GLOBAL_CONSTS.LOGIN_SUCCESS:
             return { ...state, loading: false, loggedIn: true, user: action.payload as User }
-        case GLOBAL_CONSTS.LOGOUT:
-            return { ...state, loggedIn: false, loading: false, tempToken: undefined, user: undefined }
+        // case GLOBAL_CONSTS.LOGOUT:
+        //     return { ...state, loggedIn: false, loading: false, tempToken: undefined, user: undefined }
         case GLOBAL_CONSTS.SET_TEMP_TOKEN:
             const tempUser=action.payload as User
             return { ...state, loading: false, tempToken: tempUser.token}

@@ -2,10 +2,22 @@ import { createStore, combineReducers, applyMiddleware, Dispatch } from 'redux';
 import thunk from 'redux-thunk';
 import {TypedUseSelectorHook,useSelector as useReduxSelector, useDispatch as useAppDispatch} from "react-redux";
 import globalReducer from './globalReducer';
+import familyReducer from './familyReducer';
+import { GLOBAL_CONSTS } from './constants';
 
-const rootReducer = combineReducers({
-  global: globalReducer
+const appReducer = combineReducers({
+  global: globalReducer,
+  family:familyReducer
 });
+
+
+const rootReducer = (state:any, action:any) => {
+  if (action.type === GLOBAL_CONSTS.LOGOUT) {
+    state = undefined;
+  }
+
+  return appReducer(state, action);
+};
 
 const configureStore = () => {
   return createStore(rootReducer,applyMiddleware(thunk));

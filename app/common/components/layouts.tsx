@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, ViewProps, ViewStyle, Text, StyleSheet, FlexAlignType } from 'react-native';
 import Svg, { Image } from 'react-native-svg';
-import { Layout } from '@ui-kitten/components';
+import { Layout, Text as TextKitten } from '@ui-kitten/components';
 
 import { colors } from '../../theme/vars';
 
@@ -27,7 +27,7 @@ interface IMyView extends ViewProps {
   borderW?: number,
   alignItems?: 'left' | 'right' | 'center' | 'baseLine' | 'stretch',
   direction?: "row" | "column" | "row-reverse" | "column-reverse" | undefined
-  children: React.ReactElement|React.ReactElement[],
+  children: React.ReactElement | React.ReactElement[],
   borderRadius?: number,
 }
 export const MyView = (props: IMyView) => {
@@ -65,6 +65,7 @@ export const MyView = (props: IMyView) => {
       borderColor: props.borderColor,
       borderWidth: props.borderW,
       maxHeight: props.maxH,
+      overflow: 'scroll',
 
       ...props.style
     }}>
@@ -189,10 +190,10 @@ export const MyCard = (props: IMyCard) => {
 
 interface HStackProps {
   children: React.ReactElement[],
-  gap?: number; 
+  gap?: number;
 }
 
-export const HStack = ({ children, gap=0 }: HStackProps) => {
+export const HStack = ({ children, gap = 0 }: HStackProps) => {
 
   const childrenWithSpacing = React.Children.map(children, (child, index) => {
     if (index === 0) {
@@ -201,22 +202,28 @@ export const HStack = ({ children, gap=0 }: HStackProps) => {
     const marginLeft = gap;
     return (
       <View style={{
-         marginLeft,
-         flex:1
-       }}>
+        marginLeft,
+        flex: 1
+      }}>
         {child}
       </View>
     );
   });
 
   return <>
-    <Layout style={{
+    <View style={{
       flexDirection: 'row',
       alignItems: 'center',
-      justifyContent:'space-between',
-     // width:'100%',
-    }} level="1">
+      justifyContent: 'space-between',
+      backgroundColor: 'transparent'
+      // width:'100%',
+    }} >
       {childrenWithSpacing}
-    </Layout>
+    </View>
   </>
 }
+
+
+
+
+

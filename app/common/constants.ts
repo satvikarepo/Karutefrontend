@@ -18,7 +18,9 @@ export const commanMessage={
 export const relations:Option[]=[
     { id: 'Self', name: 'Self' },
     { id: 'Spouse', name: 'Spouse' },
-    { id: 'Children', name: 'Children' }
+    { id: 'Children', name: 'Children' },
+    { id: 'Father', name: 'Father' },
+    { id: 'Mother', name: 'Mother' }
 ]
 export const genders:Option[]=[
     { id: 'Male', name: 'Male' },

@@ -19,6 +19,8 @@ interface IMyDate {
     value?: Date,
     name?: string,
     error?: string,
+    max?: Date,
+    min?: Date,
     onChange?: (value: Date) => void
     placeHolder?: string,
     prefix?: React.ReactElement,
@@ -45,6 +47,8 @@ export const MyDate = (props: IMyDate) => {
                 <MyView bg={colors.white} borderRadius={4} minW={300}>
                     <>
                         <Calendar
+                            max={props.max}
+                            min={props.min}
                             date={props.value}
                             onSelect={(date: Date) => {
                                 props.onChange && props.onChange(date);

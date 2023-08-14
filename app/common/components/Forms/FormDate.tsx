@@ -21,10 +21,10 @@ interface IFormDate extends InputProps {
     label?: React.ReactElement,
     setValue: UseFormSetValue<any>
     rules?: Omit<RegisterOptions<FieldValues, "name">, "disabled" | "valueAsNumber" | "valueAsDate" | "setValueAs"> | undefined
+    max?: Date,
+    min?: Date,
 }
 export const FormDate = (props: IFormDate) => {
-    const Prefix = props.prefix ? <MyView mr={2} pl={0}>{props.prefix}</MyView> : undefined;
-    const Postfix = props.postfix ? <MyView pr={4}>{props.postfix}</MyView> : undefined;
     return (
         <>
             {props.label && <MyView ml={2} mb={6}>{props.label}</MyView>}
@@ -33,6 +33,8 @@ export const FormDate = (props: IFormDate) => {
                 rules={props.rules}
                 render={({ field }) => (
                         <MyDate
+                            max={props.max}
+                            min={props.min}
                             value={field.value} onChange={(val) => {
                                 props.setValue(field.name, val, { shouldTouch: true, shouldValidate: true });
                             }}

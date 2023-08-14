@@ -6,14 +6,14 @@ import { styles } from '../../theme/styles';
 import { colors } from '../../theme/vars';
 import { useSelector } from "../../redux/store";
 
-import { MyView } from './layouts';
+import { HStack, Logo, MyCircle, MyView } from './layouts';
 
 
 export const GlobalLoader = () => {
     const { loading } = useSelector(state => state.global);
     const contentPadding = 8;
     const opacityValue = useRef(new Animated.Value(0)).current;
-    console.log('loading',loading);
+    console.log('loading', loading);
     const animateModalExit = () => {
         Animated.timing(opacityValue, {
             toValue: 0,
@@ -34,12 +34,22 @@ export const GlobalLoader = () => {
                 animationType='slide'
             >
                 <View style={styles.loaderBackdrop}>
-                    <MyView w={150} pd={24} alignItems='center' bg={colors.primary} borderRadius={3}
-                        pt={contentPadding} pb={contentPadding} pl={contentPadding} pr={contentPadding} >
-                        <>
-                            <ActivityIndicator size='large' style={{ margin: 0, padding: 0 }} color={colors.white} />
-                            <Text style={{ color: colors.white }} >Please wait...</Text>
-                        </>
+                    <MyView mb={30}>
+                        <Logo />
+                    </MyView>
+                    <MyView bg={colors.white} pd={8} w={120} alignItems='center'
+                        borderRadius={5}>
+                        <MyView w={150} pd={24} alignItems='center'
+                            borderRadius={3}
+                            pt={contentPadding} pb={contentPadding} pl={contentPadding} pr={contentPadding} >
+                            <>
+                                <HStack gap={8}>
+                                    <ActivityIndicator size='small' style={{ margin: 0, padding: 0, marginLeft: 16 }}
+                                        color={colors.primary} />
+                                    <Text style={{ color: colors.primary }} >Please wait...</Text>
+                                </HStack>
+                            </>
+                        </MyView>
                     </MyView>
                 </View>
 

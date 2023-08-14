@@ -59,9 +59,11 @@ export const MySelect = (props: IMySelect) => {
                                         borderBottomColor: colors.border,
                                         borderBottomWidth: 1,
                                     }}>
-                                        <TouchableHighlight style={{
+                                        <TouchableHighlight 
+                                        underlayColor={colors.bg}
+                                        style={{
                                             width: '100%',
-                                        }} activeOpacity={0.9}
+                                        }} activeOpacity={1}
                                             onPress={() => {
                                                 props.onChange && props.onChange(item);
                                                 setOpen(false);

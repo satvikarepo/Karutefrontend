@@ -75,11 +75,13 @@ export type ChangePasswordForm = {
 }
 
 export type FamilyMember={
-  name:string,
+  id?:string|number,
+  fullName:string,
   relation:string | number,
   email:string,
   dob:Date,
-  gender:'Male'|'Female'
+  gender:'Male'|'Female',
+  updatedDate:Date,
 }
 export interface Option {
   id: string | number; // The unique value to identify the option (mandatory)

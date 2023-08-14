@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, TouchableHighlight } from 'react-native';
+import { View, StyleSheet, TouchableHighlight, Platform } from 'react-native';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 
 import { IconHome } from '../../../assets/icons/Home';
@@ -68,12 +68,23 @@ const tabStyles = StyleSheet.create({
         bottom: 0,
         left: 0,
         right: 0,
-        elevation: 15,
-        shadowOffset: {
-            width: 15, height: 15 // for iOS
-        },
+       //  elevation: 15,
+        // shadowOffset: {
+        //     width: 15, height: 15 // for iOS
+        // },
         backgroundColor: colors.white,
         height: spacing.bottomTab.h,
+        ...Platform.select({
+            ios: {
+              shadowColor: 'black',
+              shadowOffset: { width: 0, height: -3 },
+              shadowOpacity: 0.4,
+              shadowRadius: 15,
+            },
+            android: {
+              elevation: 15,
+            },
+          }),
     },
     roundContainer: {
         overflow:'hidden',

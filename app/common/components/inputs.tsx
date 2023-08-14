@@ -16,7 +16,7 @@ interface IMyInput extends InputProps {
     ref?: React.LegacyRef<Input>
 }
 export const MyInput = (props: IMyInput) => {
-    const Prefix= props.prefix ? <MyView pl={6}>{props.prefix}</MyView> : undefined;
+    const Prefix= props.prefix ? <MyView pl={0}>{props.prefix}</MyView> : undefined;
     return (
         <>
             <Input size='large'

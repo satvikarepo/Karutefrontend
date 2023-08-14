@@ -39,7 +39,18 @@ export const styles = StyleSheet.create({
     loaderBackdrop: {
         flex: 1, alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: colors.primary
+        backgroundColor: colors.white
+    },
+    shadow:{
+        elevation: 4,
+        shadowColor: colors.grey,
+        //ios shadow
+        shadowOpacity: 0.5,
+        shadowRadius: 5,
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        }
     }
 
 });
