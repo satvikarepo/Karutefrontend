@@ -6,6 +6,7 @@ import { Text, Button, ButtonProps } from '@ui-kitten/components';
 
 import { styles } from '../../theme/styles';
 import { colors, spacing } from '../../theme/vars';
+import { MyView } from './layouts';
 
 
 interface IMyButton extends ButtonProps {
@@ -14,7 +15,7 @@ interface IMyButton extends ButtonProps {
     ref?: React.MutableRefObject<Button | null>
 }
 export const MyButton = (props: IMyButton) => {
-   
+
     return (
         <>
             <Button appearance={props.secondary ? 'outline' : 'filled'}
@@ -69,22 +70,42 @@ interface IMyLinkButton {
     mr?: number,
     mt?: number,
     mb?: number,
-    textSize?: number
+    textSize?: number,
+    withBg?: boolean,
+    w?:number
 }
 export const MyLinkButton = (props: IMyLinkButton) => {
+
+    if (props.withBg) {
+        return <TouchableOpacity activeOpacity={0.6} onPress={props.onPress}>
+            <MyView bg={colors.bg} pd={2} pr={6} w={props.w} pl={6} alignItems='center' borderRadius={5}>
+                <Text style={[styles.link,
+                {
+                    textAlign: props.textAlign || 'left',
+                    marginLeft: props.ml || 0,
+                    marginRight: props.mr || 0,
+                    marginTop: props.mt || 0,
+                    marginBottom: props.mr || 0,
+                    fontSize: props.textSize
+                }]}>{props.children}</Text>
+            </MyView>
+        </TouchableOpacity>
+
+    }
+
     return (
         <>
-                <TouchableOpacity activeOpacity={0.6} onPress={props.onPress}>
-                    <Text style={[styles.link,
-                    {
-                        textAlign: props.textAlign || 'left',
-                        marginLeft: props.ml || 0,
-                        marginRight: props.mr || 0,
-                        marginTop: props.mt || 0,
-                        marginBottom: props.mr || 0,
-                        fontSize: props.textSize
-                    }]}>{props.children}</Text>
-                </TouchableOpacity>
+            <TouchableOpacity activeOpacity={0.6} onPress={props.onPress}>
+                <Text style={[styles.link,
+                {
+                    textAlign: props.textAlign || 'left',
+                    marginLeft: props.ml || 0,
+                    marginRight: props.mr || 0,
+                    marginTop: props.mt || 0,
+                    marginBottom: props.mr || 0,
+                    fontSize: props.textSize
+                }]}>{props.children}</Text>
+            </TouchableOpacity>
         </>
     );
 };

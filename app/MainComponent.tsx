@@ -8,6 +8,7 @@ import BottomTabBar from './screen/Private/BottomTabBar';
 import { colors } from "./theme/vars";
 import { AppModal } from "./common/components/AppModal";
 import { GlobalLoader } from "./common/components/GlobalLoader";
+import AppIntro from "./screen/AppIntro";
 
 
 export default function MainComponent() {
@@ -22,6 +23,7 @@ export default function MainComponent() {
         <BottomTabBar />
         : <NavigationContainer>
           <Routes />
+          {/* <AppIntro/> */}
         </NavigationContainer>
       }
     </>

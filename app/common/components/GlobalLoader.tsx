@@ -37,12 +37,12 @@ export const GlobalLoader = () => {
             Animated.sequence([
                 Animated.timing(logoOp, {
                     toValue: 0.6, // Target opacity value (partially transparent)
-                    duration: 700, // Animation duration in milliseconds
+                    duration: 1000, // Animation duration in milliseconds
                     useNativeDriver: true, // Optimize animation performance
                 }),
                 Animated.timing(logoOp, {
                     toValue: 1, // Return to fully opaque
-                    duration: 700, // Animation duration in milliseconds
+                    duration: 1000, // Animation duration in milliseconds
                     useNativeDriver: true, // Optimize animation performance
                 }),
             ]),

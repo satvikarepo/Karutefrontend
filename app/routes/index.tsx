@@ -1,10 +1,13 @@
+import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import Login from '../../app/screen/Login';
 import Signup from '../../app/screen/Signup';
 import OTPVerify from '../../app/screen/OTPVerify';
 import ForgetPassword from '../../app/screen/ForgetPassword';
 import ResetPassword from '../../app/screen/ForgetResetPassword';
+import AppIntro from "../../app/screen/AppIntro";
 import { AppStackParamList } from '../common/types';
+
 
 
 export const Stack = createStackNavigator<AppStackParamList>();
@@ -12,7 +15,7 @@ export const Stack = createStackNavigator<AppStackParamList>();
 interface IRoutes {
 }
 export const Routes = (props: IRoutes) => {
-
+   
     const SignupProps=()=><Signup/>;
     const LoginProps=()=><Login />
 
